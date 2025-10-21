@@ -4,16 +4,16 @@ import Coffee2 from "../../assets/images/projectImage/CoffeeListing/CoffeeListin
 import ToDoApp1 from "../../assets/images/projectImage/ToDoApp/ToDoApp (2).png";
 import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.png";
 import trackingdash1 from "../../assets/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.png";
-import articlepreview1 from "../../assets/images/projectImage/article preview component master/article preview component master.jpg";
-import blogpreview1 from "../../assets/images/projectImage/blog preview card main/blog preview card main.jpg";
-import fourcardfeature1 from "../../assets/images/projectImage/four card feature section master/four card feature section master.jpg";
-import productpreview1 from "../../assets/images/projectImage/product preview card component main/product preview card component main.jpg";
-import qrcode1 from "../../assets/images/projectImage/qr code component main/qr code component main.jpg";
-import recipepage1 from "../../assets/images/projectImage/recipe page main/recipe page main.jpg";
+import articlepreview1 from "../../assets/images/projectImage/article-preview-component-master/article-preview-component-master.jpg";
+import blogpreview1 from "../../assets/images/projectImage/blog-preview-card-main/blog-preview-card-main.jpg";
+import fourcardfeature1 from "../../assets/images/projectImage/four-card-feature-section-master/four-card-feature-section-master.jpg";
+import productpreview1 from "../../assets/images/projectImage/product-preview-card-component-main/product-preview-card-component-main.jpg";
+import qrcode1 from "../../assets/images/projectImage/qr-code-component-main/qr-code-component-main.jpg";
+import recipepage1 from "../../assets/images/projectImage/recipe-page-main/recipe-page-main.jpg";
 import simpleToDoApp1 from "../../assets/images/projectImage/simple-ToDoApp/ToDoApp.png";
-import sociallinks1 from "../../assets/images/projectImage/social links profile main/social links profile main.jpg";
-import testimonialsgrid1 from "../../assets/images/projectImage/testimonials grid section main/testimonials grid section main.jpg";
-import TypeTestSpeed1 from "../../assets/images/projectImage/Type Test Speed/Type Test Speed.png";
+import sociallinks1 from "../../assets/images/projectImage/social-links-profile-main/social-links-profile-main.jpg";
+import testimonialsgrid1 from "../../assets/images/projectImage/testimonials-grid-section-main/testimonials-grid-section-main.jpg";
+import TypeTestSpeed1 from "../../assets/images/projectImage/Type-Test-Speed/Type-Test-Speed.png";
 import WeatherApp1 from "../../assets/images/projectImage/Weather-App/Weather-App.png";
 
 function MyGallery({ images, resetGallery }) {
