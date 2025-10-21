@@ -1,0 +1,83 @@
+#projects {
+  margin-bottom: 5rem;
+}
+
+.project-card {
+  background: linear-gradient(145deg, #2a1653 0%, #3f215f 100%);
+  border-radius: 20px;
+  padding: 1.8rem 1.5rem;
+  color: #e6e1f2;
+  box-shadow: 0 6px 20px rgba(126, 88, 204, 0.6);
+  margin-bottom: 1.8rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 10px 28px rgba(126, 88, 204, 0.85);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.project-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #f3e5ab;
+  text-shadow: 0 0 4px #f3e5ab;
+}
+
+.project-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-buttons button,
+.buttons {
+  background: #e1c699;
+  border: none;
+  padding: 0.5rem 1.3rem;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #1b0b3b;
+  cursor: pointer;
+  box-shadow: 0 0 10px #e1c699;
+  transition: background-color 0.3s ease;
+}
+
+.project-buttons button:hover,
+.buttons:hover {
+  background: #c9b26e;
+}
+
+.project-description {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #d8d2f2;
+}
+
+
+
+
+
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.tech-icon {
+  font-size: 1.4rem;
+  color: #e1c699;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.tech-icon:hover {
+  transform: scale(1.2);
+  color: #caa86f;
+}

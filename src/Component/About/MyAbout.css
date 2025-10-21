@@ -1,0 +1,21 @@
+#about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+#about img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(126, 88, 204, 0.7);
+    object-fit: cover;
+    width: 450px;
+    height: 500px;
+}
+
+#about-text p {
+    font-size: 1.15rem;
+    color: #d8d2f2;
+}

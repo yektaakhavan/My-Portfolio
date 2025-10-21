@@ -1,0 +1,33 @@
+#skills {
+    margin-bottom: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.skill-item {
+    background: linear-gradient(145deg, #2a1653 0%, #3f215f 100%);
+    padding: 1.8rem 1rem;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(126, 88, 204, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(126, 88, 204, 0.85);
+}
+
+.skill-item i {
+    font-size: 2.8rem;
+    color: #e1c699;
+    margin-bottom: 0.6rem;
+}
+
+.skill-item span {
+    display: block;
+    font-weight: 700;
+    color: #e6e1f2;
+    font-size: 1.1rem;
+}

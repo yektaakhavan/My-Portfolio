@@ -1,0 +1,143 @@
+#gallery {
+    margin-bottom: 5rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.4rem;
+}
+
+.gallery-item {
+    position: relative;
+    cursor: pointer;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(126, 88, 204, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(126, 88, 204, 0.85);
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+    object-fit: cover;
+    height: 140px;
+}
+
+
+
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #e1c699;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #e1c699;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10000;
+}
+
+
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: #e1c699;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10001;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    color: #fff;
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.zoom-controls {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    gap: 1rem;
+    z-index: 10001;
+}
+
+.zoom-controls button {
+    background: #e1c699;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #1b0b3b;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.zoom-controls button:hover {
+    transform: scale(1.1);
+}
+
+.lightbox-image {
+    transition: transform 0.1s ease;
+    touch-action: none;
+}
+
+
+.btn-show-all {
+  background: #e1c699;
+  border: none;
+  padding: 0.5rem 1.3rem;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #1b0b3b;
+  cursor: pointer;
+  box-shadow: 0 0 10px #e1c699;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-left: 0; /* سمت چپ */
+}
+
+.btn-show-all:hover {
+  background: #c9b26e;
+}

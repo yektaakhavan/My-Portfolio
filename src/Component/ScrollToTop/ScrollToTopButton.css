@@ -1,0 +1,38 @@
+.scroll-to-top {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: linear-gradient(135deg, #e1c699, #9e7de0);
+    color: #1b0b3b;
+    box-shadow: 0 0 18px rgba(225, 198, 153, 0.5);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    backdrop-filter: blur(6px);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-6px) scale(1.08);
+    box-shadow: 0 0 25px rgba(225, 198, 153, 0.9),
+        0 0 10px rgba(158, 125, 224, 0.6);
+    background: linear-gradient(135deg, #f5dca5, #b59ae9);
+}
+
+/* آیکون فلش */
+.scroll-icon {
+    width: 30px;
+    height: 30px;
+    color: #1b0b3b;
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover .scroll-icon {
+    transform: translateY(-4px);
+}
