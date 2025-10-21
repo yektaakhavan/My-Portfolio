@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// مسیر زیر باید نام ریپازیتوری‌ت باشه
 export default defineConfig({
   plugins: [react()],
-  base:"./yektaakhavan"
+  base: '/My-Portfolio/',
 })
