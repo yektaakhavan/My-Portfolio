@@ -1,6 +1,6 @@
 import "../../Component/Resume/MyResume.css";
 import Nav from "react-bootstrap/Nav";
-import ResumeFile from "../../aasest/Yekta-Akhavan-Safaei-FrontEnd.pdf";
+import ResumeFile from "../../assets/Yekta-Akhavan-Safaei-FrontEnd.pdf";
 
 function MyResume() {
   return (

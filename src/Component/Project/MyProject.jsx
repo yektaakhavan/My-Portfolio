@@ -10,23 +10,23 @@ import {
 import { MdDevices, MdDesignServices } from "react-icons/md";
 import { TbApi } from "react-icons/tb"; //API
 
-import AuthorPort1 from "../../aasest/images/projectImage/AuthorPortfolio/home-page.png";
-import AuthorPort2 from "../../aasest/images/projectImage/AuthorPortfolio/about-page.png";
-import AuthorPort3 from "../../aasest/images/projectImage/AuthorPortfolio/book-page.png";
-import AuthorPort4 from "../../aasest/images/projectImage/AuthorPortfolio/articles-page.png";
-import AuthorPort5 from "../../aasest/images/projectImage/AuthorPortfolio/article-page.png";
-import AuthorPort6 from "../../aasest/images/projectImage/AuthorPortfolio/contact-page.png";
-import AuthorPort7 from "../../aasest/images/projectImage/AuthorPortfolio/responsive.png";
+import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.png";
+import AuthorPort2 from "../../assets/images/projectImage/AuthorPortfolio/about-page.png";
+import AuthorPort3 from "../../assets/images/projectImage/AuthorPortfolio/book-page.png";
+import AuthorPort4 from "../../assets/images/projectImage/AuthorPortfolio/articles-page.png";
+import AuthorPort5 from "../../assets/images/projectImage/AuthorPortfolio/article-page.png";
+import AuthorPort6 from "../../assets/images/projectImage/AuthorPortfolio/contact-page.png";
+import AuthorPort7 from "../../assets/images/projectImage/AuthorPortfolio/responsive.png";
 
-import Coffee1 from "../../aasest/images/projectImage/CoffeeListing/CoffeeListing (1).png";
-import Coffee2 from "../../aasest/images/projectImage/CoffeeListing/CoffeeListing (2).png";
-import Coffee3 from "../../aasest/images/projectImage/CoffeeListing/CoffeeListing (3).png";
+import Coffee1 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (1).png";
+import Coffee2 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (2).png";
+import Coffee3 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (3).png";
 
-import ToDoApp1 from "../../aasest/images/projectImage/ToDoApp/ToDoApp (2).png";
-import ToDoApp2 from "../../aasest/images/projectImage/ToDoApp/ToDoApp (1).png";
+import ToDoApp1 from "../../assets/images/projectImage/ToDoApp/ToDoApp (2).png";
+import ToDoApp2 from "../../assets/images/projectImage/ToDoApp/ToDoApp (1).png";
 
-import trackingdash1 from "../../aasest/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.png";
-import trackingdash2 from "../../aasest/images/projectImage/Time-tracking-dashboard/responsive-Time-tracking-dashboard.png";
+import trackingdash1 from "../../assets/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.png";
+import trackingdash2 from "../../assets/images/projectImage/Time-tracking-dashboard/responsive-Time-tracking-dashboard.png";
 
 const projectsData = [
   {
