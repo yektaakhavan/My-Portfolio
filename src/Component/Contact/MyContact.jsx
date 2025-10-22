@@ -9,12 +9,12 @@ function MyContact() {
         If you want to work together or just say hi, feel free to reach out:
       </p>
 
-      {/* دکمه ایمیل */}
+      {/* Email Button*/}
       <a href="mailto:yekta.akhavan.dev@gmail.com" className="email-btn">
         Send Email
       </a>
 
-      {/* شبکه‌های اجتماعی */}
+      {/*Socia lNetwork*/}
       <div className="social-links" style={{ marginTop: "2rem" }}>
         <a
           href="https://linkedin.com/in/yekta-akhavan"

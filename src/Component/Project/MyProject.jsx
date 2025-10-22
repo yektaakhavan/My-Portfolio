@@ -35,13 +35,13 @@ const projectsData = [
     github: "https://github.com/yektaakhavan/Author-portfolio",
     demo: "https://www.akhavan-safaei.ir/",
     images: [
-      { src: AuthorPort1, alt: "Project 3 Image 1" },
-      { src: AuthorPort2, alt: "Project 3 Image 2" },
-      { src: AuthorPort3, alt: "Project 3 Image 3" },
-      { src: AuthorPort4, alt: "Project 3 Image 4" },
-      { src: AuthorPort5, alt: "Project 3 Image 5" },
-      { src: AuthorPort6, alt: "Project 3 Image 6" },
-      { src: AuthorPort7, alt: "Project 3 Image 7" },
+      { src: AuthorPort1, alt: "Project 1 Image 1" },
+      { src: AuthorPort2, alt: "Project 1 Image 2" },
+      { src: AuthorPort3, alt: "Project 1 Image 3" },
+      { src: AuthorPort4, alt: "Project 1 Image 4" },
+      { src: AuthorPort5, alt: "Project 1 Image 5" },
+      { src: AuthorPort6, alt: "Project 1 Image 6" },
+      { src: AuthorPort7, alt: "Project 1 Image 7" },
     ],
     description:
       "A personal website for introducing an author, their biography, and published book — includes multiple pages with a clean and responsive design.",
@@ -59,9 +59,9 @@ const projectsData = [
     github: "https://github.com/yektaakhavan/coffee-listing",
     demo: "https://yektaakhavan.github.io/coffee-listing/",
     images: [
-      { src: Coffee1, alt: "Project 1 Image 1" },
-      { src: Coffee2, alt: "Project 1 Image 2" },
-      { src: Coffee3, alt: "Project 1 Image 3" },
+      { src: Coffee1, alt: "Project 2 Image 1" },
+      { src: Coffee2, alt: "Project 2 Image 2" },
+      { src: Coffee3, alt: "Project 2 Image 3" },
     ],
     description:
       "A responsive coffee listing interface built with React, using JSON data for dynamic content.",
@@ -73,8 +73,8 @@ const projectsData = [
     github: "https://github.com/yektaakhavan/react-ToDoApp",
     demo: "https://yektaakhavan.github.io/react-ToDoApp/",
     images: [
-      { src: ToDoApp1, alt: "Project 2 Image 1" },
-      { src: ToDoApp2, alt: "Project 2 Image 2" },
+      { src: ToDoApp1, alt: "Project 3 Image 1" },
+      { src: ToDoApp2, alt: "Project 3 Image 2" },
     ],
     description:
       "A simple To-Do List app built with React, featuring add, delete, and mark-as-done functionalities.",

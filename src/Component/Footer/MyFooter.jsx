@@ -9,7 +9,7 @@ function MyFooter() {
         alt="YA Logo"
         style={{ width: "40px", verticalAlign: "middle", marginRight: "10px" }}
       />
-      &copy; 2025 Yekta Akhavan. All rights reserved.
+      &copy; 2025, Designed & Built with 💜by Yekta Akhavan.
     </footer>
   );
 }

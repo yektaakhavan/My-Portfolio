@@ -35,7 +35,27 @@
   gap: 1rem;
 }
 
-.project-buttons button,
+.project-buttons button {
+  /* background: #e1c699; */
+  background: linear-gradient(145deg, rgba(196, 160, 223, 0.9) 0%, rgba(245, 220, 160, 0.9) 100%);
+  border: none;
+  padding: 0.5rem 1.3rem;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #1b0b3b;
+  cursor: pointer;
+  box-shadow: 0 0 10px #e1c699;
+  transition: background-color 0.3s ease;
+}
+
+.project-buttons button:hover {
+  /* background: #c9b26e; */
+  /* background: linear-gradient(145deg, rgba(224, 199, 243, 0.9) 0%, rgba(206, 167, 84, 0.9) 100%); */
+  background: linear-gradient(145deg, rgba(245, 220, 160, 0.9) 0%, rgba(196, 160, 223, 0.9) 100%);
+}
+
+
+
 .buttons {
   background: #e1c699;
   border: none;
@@ -48,10 +68,11 @@
   transition: background-color 0.3s ease;
 }
 
-.project-buttons button:hover,
+
 .buttons:hover {
   background: #c9b26e;
 }
+
 
 .project-description {
   margin-bottom: 1rem;

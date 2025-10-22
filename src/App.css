@@ -1,9 +1,20 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/Fonts/Poppins/Poppins-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 * {
   box-sizing: border-box;
+  cursor: none !important;
 }
+
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  font-family: "Poppins", sans-serif;
   background: #1b0b3b;
   color: #e6e1f2;
   line-height: 1.6;
@@ -15,4 +26,27 @@ main {
   max-width: 1100px;
   margin: 3rem auto 5rem;
   padding: 0 1.5rem;
+}
+
+
+
+body.lightbox-active,
+body.lightbox-active * {
+  cursor: auto !important;
+}
+
+
+/* انیمیشن درخشش کرسر */
+@keyframes shine {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+    filter: drop-shadow(0 0 6px #caa8ff);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+    filter: drop-shadow(0 0 14px #ffd700) drop-shadow(0 0 22px #b57edc);
+  }
 }

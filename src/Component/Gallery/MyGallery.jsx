@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../../Component/Gallery/MyGallery.css";
+import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.png";
 import Coffee2 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (2).png";
 import ToDoApp1 from "../../assets/images/projectImage/ToDoApp/ToDoApp (2).png";
-import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.png";
 import trackingdash1 from "../../assets/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.png";
 import articlepreview1 from "../../assets/images/projectImage/article-preview-component-master/article-preview-component-master.jpg";
 import blogpreview1 from "../../assets/images/projectImage/blog-preview-card-main/blog-preview-card-main.jpg";
@@ -18,7 +18,7 @@ import WeatherApp1 from "../../assets/images/projectImage/Weather-App/Weather-Ap
 
 function MyGallery({ images, resetGallery }) {
   const [displayImages, setDisplayImages] = useState([]);
-  const [showAllButton, setShowAllButton] = useState(false); // حالت دکمه
+  const [showAllButton, setShowAllButton] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [zoom, setZoom] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -26,47 +26,59 @@ function MyGallery({ images, resetGallery }) {
 
   const startPos = useRef({ x: 0, y: 0 });
   const isDragging = useRef(false);
+  const pinchStart = useRef(null);
+  const touchStart = useRef(null);
 
-  const DRAG_SPEED = 0.3; // ضریب سرعت درگ (کوچکتر = حرکت آرام‌تر)
+  const DRAG_SPEED = 0.3;
+  const isMobile = window.innerWidth <= 768;
+
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      document.body.classList.add("lightbox-active");
+    } else {
+      document.body.classList.remove("lightbox-active");
+    }
+  }, [lightboxIndex]);
 
   const defaultImages = [
-    { src: AuthorPort1, alt: "Project 3 Image 1" },
-    { src: Coffee2, alt: "Project 1 Image 2" },
-    { src: ToDoApp1, alt: "Project 2 Image 1" },
-    { src: trackingdash1, alt: "Project 4 Image 1" },
-    { src: articlepreview1, alt: "Project 5 Image 1" },
-    { src: blogpreview1, alt: "Project 6 Image 1" },
+    { src: AuthorPort1, alt: "Project 1 Image 1" },
     { src: fourcardfeature1, alt: "Project 7 Image 1" },
-    { src: productpreview1, alt: "Project 8 Image 1" },
+    { src: testimonialsgrid1, alt: "Project 13 Image 1" },
     { src: qrcode1, alt: "Project 9 Image 1" },
+    { src: articlepreview1, alt: "Project 5 Image 1" },
+    { src: TypeTestSpeed1, alt: "Project 14 Image 1" },
+    { src: productpreview1, alt: "Project 8 Image 1" },
     { src: recipepage1, alt: "Project 10 Image 1" },
+    { src: ToDoApp1, alt: "Project 3 Image 1" },
+    { src: blogpreview1, alt: "Project 6 Image 1" },
+    { src: WeatherApp1, alt: "Project 15 Image 1" },
+    { src: Coffee2, alt: "Project 2 Image 2" },
+    { src: trackingdash1, alt: "Project 4 Image 1" },
     { src: simpleToDoApp1, alt: "Project 11 Image 1" },
     { src: sociallinks1, alt: "Project 12 Image 1" },
-    { src: testimonialsgrid1, alt: "Project 13 Image 1" },
-    { src: TypeTestSpeed1, alt: "Project 14 Image 1" },
-    { src: WeatherApp1, alt: "Project 15 Image 1" },
   ];
 
   useEffect(() => {
     if (images && images.length > 0) {
       setDisplayImages(images);
-      setShowAllButton(true); // وقتی روی Show Images پروژه کلیک شد، دکمه نمایش داده شود
+      setShowAllButton(true);
     } else {
       setDisplayImages(defaultImages);
-      setShowAllButton(false); // حالت پیش‌فرض، دکمه نمایش داده نشود
+      setShowAllButton(false);
     }
   }, [images]);
 
   const handleShowAll = () => {
     setDisplayImages(defaultImages);
-    setShowAllButton(false); // بعد از نمایش همه، دکمه دوباره مخفی شود
-    if (resetGallery) resetGallery(); // اگر نیاز به ریست شدن parent داری
+    setShowAllButton(false);
+    if (resetGallery) resetGallery();
   };
 
   const openLightbox = (index) => {
     setLightboxIndex(index);
     setZoom(1);
     setOffset({ x: 0, y: 0 });
+    document.body.classList.add("lightbox-active");
   };
 
   const closeLightbox = () => {
@@ -74,6 +86,7 @@ function MyGallery({ images, resetGallery }) {
       setLightboxIndex(null);
       setZoom(1);
       setOffset({ x: 0, y: 0 });
+      document.body.classList.remove("lightbox-active");
     }
   };
 
@@ -132,19 +145,50 @@ function MyGallery({ images, resetGallery }) {
     isDragging.current = false;
   };
 
-  // Touch handlers for mobile swipe
-  const touchStart = useRef(null);
+  // Wheel zoom desktop
+  const handleWheel = (e) => {
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? 0.2 : -0.2;
+    setZoom((prev) => Math.max(0.4, prev + delta));
+  };
+
+  // Touch handlers
   const handleTouchStart = (e) => {
-    touchStart.current = e.touches[0].clientX;
+    if (e.touches.length === 1) {
+      touchStart.current = e.touches[0].clientX;
+    }
   };
 
   const handleTouchEnd = (e) => {
     if (!touchStart.current) return;
-    const touchEnd = e.changedTouches[0].clientX;
-    const diff = touchStart.current - touchEnd;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStart.current - touchEndX;
     if (diff > 50) showNext(e);
     else if (diff < -50) showPrev(e);
     touchStart.current = null;
+  };
+
+  const handleTouchMove = (e) => {
+    if (e.touches.length === 2) {
+      const touch1 = e.touches[0];
+      const touch2 = e.touches[1];
+      const distance = Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+      );
+
+      if (!pinchStart.current) {
+        pinchStart.current = distance;
+      } else {
+        const diff = distance - pinchStart.current;
+        setZoom((prev) => Math.max(0.4, prev + diff * 0.005));
+        pinchStart.current = distance;
+      }
+    }
+  };
+
+  const handleTouchEndMobile = (e) => {
+    if (e.touches.length < 2) pinchStart.current = null;
   };
 
   return (
@@ -171,9 +215,13 @@ function MyGallery({ images, resetGallery }) {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
-          onTouchEnd={handleTouchEnd}
+          onTouchEnd={(e) => {
+            handleTouchEnd(e);
+            handleTouchEndMobile(e);
+          }}
+          style={{ cursor: "auto" }}
         >
-          {/* دکمه ضربدر – همیشه کار می‌کند */}
+          {/* Close button always works */}
           <span
             className="close-btn"
             onClick={(e) => {
@@ -181,12 +229,12 @@ function MyGallery({ images, resetGallery }) {
               setLightboxIndex(null);
               setZoom(1);
               setOffset({ x: 0, y: 0 });
+              document.body.classList.remove("lightbox-active");
             }}
           >
             &times;
           </span>
 
-          {/* فلش‌ها */}
           <span className="prev-btn" onClick={showPrev}>
             &#10094;
           </span>
@@ -194,7 +242,6 @@ function MyGallery({ images, resetGallery }) {
             &#10095;
           </span>
 
-          {/* تصویر با زوم و drag */}
           <img
             src={displayImages[lightboxIndex].src}
             alt={displayImages[lightboxIndex].alt}
@@ -204,17 +251,21 @@ function MyGallery({ images, resetGallery }) {
               cursor: zoom > 1 ? "grab" : "auto",
             }}
             onMouseDown={handleMouseDown}
+            onWheel={handleWheel}
             onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
           />
 
-          {/* دکمه‌های زوم */}
-          <div className="zoom-controls">
-            <button onClick={zoomIn}>+</button>
-            <button onClick={zoomOut}>-</button>
-          </div>
+          {/* Zoom controls only on desktop */}
+          {!isMobile && (
+            <div className="zoom-controls">
+              <button onClick={zoomIn}>+</button>
+              <button onClick={zoomOut}>-</button>
+            </div>
+          )}
         </div>
       )}
-      {/* دکمه نمایش همه تصاویر */}
+
       {showAllButton && (
         <div style={{ textAlign: "left", marginTop: "1rem" }}>
           <button className="btn-show-all" onClick={handleShowAll}>

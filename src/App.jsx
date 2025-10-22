@@ -10,16 +10,19 @@ import MyResume from "./Component/Resume/MyResume";
 import MyContact from "./Component/Contact/MyContact";
 import MyFooter from "./Component/Footer/MyFooter";
 import ScrollToTopButton from "./Component/ScrollToTop/ScrollToTopButton";
+import CustomCursor from "./Component/CustomCursor/CustomCursor";
+import Scrollbar from "./Component/customScrollbar/Scrollbar";
 
 function App() {
   useEffect(() => {
-    // وقتی کامپوننت لود شد، صفحه رو به بالا ببر
     window.scrollTo(0, 0);
   }, []);
 
   const [selectedProjectImages, setSelectedProjectImages] = useState([]);
   return (
     <>
+      <Scrollbar />
+      <CustomCursor />
       <MyHeader />
       <MyNavbar />
       <main>

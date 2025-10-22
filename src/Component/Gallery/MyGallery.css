@@ -14,7 +14,7 @@
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(126, 88, 204, 0.5);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery-item:hover {
@@ -30,9 +30,6 @@
     height: 140px;
 }
 
-
-
-
 /* Lightbox */
 .lightbox {
     position: fixed;
@@ -45,6 +42,8 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    touch-action: none;
+    /* جلوگیری از اسکرول پیش‌فرض روی موبایل */
 }
 
 .lightbox-image {
@@ -52,6 +51,9 @@
     max-height: 90%;
     border-radius: 12px;
     box-shadow: 0 0 20px #e1c699;
+    transition: transform 0.1s ease;
+    /* برای drag و pinch بهتر */
+    will-change: transform;
 }
 
 .close-btn {
@@ -64,8 +66,6 @@
     user-select: none;
     z-index: 10000;
 }
-
-
 
 .prev-btn,
 .next-btn {
@@ -111,33 +111,54 @@
     cursor: pointer;
     color: #1b0b3b;
     font-weight: bold;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .zoom-controls button:hover {
     transform: scale(1.1);
+    background-color: #c9b26e;
 }
-
-.lightbox-image {
-    transition: transform 0.1s ease;
-    touch-action: none;
-}
-
 
 .btn-show-all {
-  background: #e1c699;
-  border: none;
-  padding: 0.5rem 1.3rem;
-  border-radius: 30px;
-  font-weight: 700;
-  color: #1b0b3b;
-  cursor: pointer;
-  box-shadow: 0 0 10px #e1c699;
-  transition: background-color 0.3s ease;
-  display: inline-block;
-  margin-left: 0; /* سمت چپ */
+    background: #e1c699;
+    border: none;
+    padding: 0.5rem 1.3rem;
+    border-radius: 30px;
+    font-weight: 700;
+    color: #1b0b3b;
+    cursor: pointer;
+    box-shadow: 0 0 10px #e1c699;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-left: 0;
 }
 
 .btn-show-all:hover {
-  background: #c9b26e;
+    background: #c9b26e;
+}
+
+/* واکنش‌گرایی موبایل */
+@media (max-width: 768px) {
+    .lightbox-image {
+        max-width: 95%;
+        max-height: 80%;
+    }
+
+    .prev-btn,
+    .next-btn {
+        font-size: 2.5rem;
+        padding: 0 5px;
+    }
+
+    .close-btn {
+        font-size: 2rem;
+        top: 15px;
+        right: 20px;
+    }
+}
+
+/* جلوگیری از انتخاب متن هنگام drag */
+.lightbox,
+.lightbox * {
+    user-select: none;
 }

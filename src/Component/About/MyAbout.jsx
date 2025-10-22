@@ -9,16 +9,18 @@ function MyAbout() {
       <div id="about-text">
         <h2 className="section-title">About Me</h2>
         <p>
-          I'm Yekta Akhavan, a passionate and hard-working front-end developer
-          who has been seriously learning and working in this field for the past
-          few months. I started as a self-taught developer and now I’m focusing
-          deeply on React and building real-world projects to sharpen my skills.
+          I’m Yekta Akhavan. Due to my personal interest in web design and
+          programming, I chose the front-end path. By following various courses
+          and self-learning, I have been able to advance in this field.
         </p>
         <p>
-          I’m highly interested in joining professional teams and contributing
-          to dynamic, creative environments. My enthusiasm for continuous
-          learning and hands-on experience fuels my journey toward becoming a
-          professional front-end developer.
+          Now, to gain experience and further improve my skills, I am seeking
+          opportunities to work with professional programming teams and
+          companies.
+        </p>
+        <p>
+          Ultimately, I am passionate about combining design and technology to
+          create beautiful and functional user experiences.
         </p>
       </div>
     </section>
