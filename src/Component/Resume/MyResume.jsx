@@ -1,6 +1,6 @@
 import "../../Component/Resume/MyResume.css";
 import Nav from "react-bootstrap/Nav";
-import ResumeFile from "../../assets/Yekta-Akhavan-Safaei-FrontEnd.pdf";
+import ResumeFile from "../../assets/pdf/Yekta-Akhavan-Safaei-FrontEnd-en";
 
 function MyResume() {
   return (
@@ -11,6 +11,7 @@ function MyResume() {
         detail.
       </p>
 
+      
       <Nav.Link
         href={ResumeFile}
         className="resume-download-btn"
