@@ -5,7 +5,6 @@
   font-style: normal;
 }
 
-
 * {
   box-sizing: border-box;
   cursor: none !important;
@@ -13,13 +12,11 @@
 
 body {
   margin: 0;
-
   font-family: "Poppins", sans-serif;
   background: #1b0b3b;
   color: #e6e1f2;
   line-height: 1.6;
 }
-
 
 
 main {
@@ -29,14 +26,12 @@ main {
 }
 
 
-
 body.lightbox-active,
 body.lightbox-active * {
   cursor: auto !important;
 }
 
 
-/* انیمیشن درخشش کرسر */
 @keyframes shine {
   from {
     transform: translate(-50%, -50%) scale(1);
