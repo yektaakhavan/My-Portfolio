@@ -10,8 +10,6 @@ function MyResume() {
         You can download my latest resume to see my experiences and skills in
         detail.
       </p>
-
-      
       <Nav.Link
         href={ResumeFile}
         className="resume-download-btn"
