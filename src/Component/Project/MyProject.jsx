@@ -10,23 +10,23 @@ import {
 import { MdDevices, MdDesignServices } from "react-icons/md";
 import { TbApi } from "react-icons/tb"; //API
 
-import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.png";
-import AuthorPort2 from "../../assets/images/projectImage/AuthorPortfolio/about-page.png";
-import AuthorPort3 from "../../assets/images/projectImage/AuthorPortfolio/book-page.png";
-import AuthorPort4 from "../../assets/images/projectImage/AuthorPortfolio/articles-page.png";
-import AuthorPort5 from "../../assets/images/projectImage/AuthorPortfolio/article-page.png";
-import AuthorPort6 from "../../assets/images/projectImage/AuthorPortfolio/contact-page.png";
-import AuthorPort7 from "../../assets/images/projectImage/AuthorPortfolio/responsive.png";
+import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.webp";
+import AuthorPort2 from "../../assets/images/projectImage/AuthorPortfolio/about-page.webp";
+import AuthorPort3 from "../../assets/images/projectImage/AuthorPortfolio/book-page.webp";
+import AuthorPort4 from "../../assets/images/projectImage/AuthorPortfolio/articles-page.webp";
+import AuthorPort5 from "../../assets/images/projectImage/AuthorPortfolio/article-page.webp";
+import AuthorPort6 from "../../assets/images/projectImage/AuthorPortfolio/contact-page.webp";
+import AuthorPort7 from "../../assets/images/projectImage/AuthorPortfolio/responsive.webp";
 
-import Coffee1 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (1).png";
-import Coffee2 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (2).png";
-import Coffee3 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (3).png";
+import Coffee1 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (1).webp";
+import Coffee2 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (2).webp";
+import Coffee3 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (3).webp";
 
-import ToDoApp1 from "../../assets/images/projectImage/ToDoApp/ToDoApp (2).png";
-import ToDoApp2 from "../../assets/images/projectImage/ToDoApp/ToDoApp (1).png";
+import ToDoApp1 from "../../assets/images/projectImage/ToDoApp/ToDoApp (2).webp";
+import ToDoApp2 from "../../assets/images/projectImage/ToDoApp/ToDoApp (1).webp";
 
-import trackingdash1 from "../../assets/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.png";
-import trackingdash2 from "../../assets/images/projectImage/Time-tracking-dashboard/responsive-Time-tracking-dashboard.png";
+import trackingdash1 from "../../assets/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.webp";
+import trackingdash2 from "../../assets/images/projectImage/Time-tracking-dashboard/responsive-Time-tracking-dashboard.webp";
 
 const projectsData = [
   {
@@ -44,7 +44,7 @@ const projectsData = [
       { src: AuthorPort7, alt: "Project 1 Image 7" },
     ],
     description:
-      "A personal website for introducing an author, their biography, and published book — includes multiple pages with a clean and responsive design.",
+      "A personal website for an author, featuring biography details, book information, and sample content, providing users with a clear and structured browsing experience.",
     technologies: [
       <FaReact />,
       <FaBootstrap />,
@@ -64,7 +64,7 @@ const projectsData = [
       { src: Coffee3, alt: "Project 2 Image 3" },
     ],
     description:
-      "A responsive coffee listing interface built with React, using JSON data for dynamic content.",
+      "A coffee listing interface that presents product details and pricing, streamlining the process of reviewing options and making selections efficiently.",
     technologies: [<FaReact />, <FaCss3Alt />, <MdDevices />, <TbApi />, ,],
   },
   {
@@ -77,7 +77,7 @@ const projectsData = [
       { src: ToDoApp2, alt: "Project 3 Image 2" },
     ],
     description:
-      "A simple To-Do List app built with React, featuring add, delete, and mark-as-done functionalities.",
+      "A task management application that enables adding, removing, and completing tasks, supporting effective daily organization and planning.",
     technologies: [<FaReact />, <FaCss3Alt />, <MdDevices />],
   },
   {
@@ -90,8 +90,8 @@ const projectsData = [
       { src: trackingdash2, alt: "Project 4 Image 2" },
     ],
     description:
-      "Track daily, weekly, and monthly activities with a responsive UI and dynamic data updates using Vanilla JavaScript.",
-    technologies: [<FaHtml5 />, <FaCss3Alt />, <MdDevices />, <TbApi />],
+      "A time-tracking dashboard that displays activity data across different time periods, offering valuable insights into productivity patterns and time usage.",
+    technologies: [<FaHtml5 />, <FaCss3Alt />, <FaJsSquare/>, <MdDevices />, <TbApi />],
   },
 ];
 

@@ -6,7 +6,7 @@ Welcome to my personal portfolio! This project showcases my skills, projects, an
 
 ## 🖼️ Preview
 
-![Coffee Listing Preview](./Preview.png)
+![Coffee Listing Preview](./Preview.webp)
 
 ---
 

@@ -1,5 +1,5 @@
 import "../../Component/Footer/MyFooter.css";
-import FootLogo from "../../assets/images/logo/logo-ya.png";
+import FootLogo from "../../assets/images/logo/logo-ya.webp";
 
 function MyFooter() {
   return (

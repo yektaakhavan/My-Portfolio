@@ -1,6 +1,12 @@
-@font-face {
+/* @font-face {
   font-family: 'Poppins';
   src: url('./assets/Fonts/Poppins/Poppins-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+} */
+@font-face {
+  font-family: 'Alike';
+  src: url('./assets/Fonts/Alike/Alike-Regular.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -12,7 +18,7 @@
 
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Alike", sans-serif;
   background: #1b0b3b;
   color: #e6e1f2;
   line-height: 1.6;

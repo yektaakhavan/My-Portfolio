@@ -1,6 +1,6 @@
 import React from "react";
 import "../../Component/About/MyAbout.css";
-import MyPicture from "../../assets/images/myPicture/ResizeProfileImage.jpg";
+import MyPicture from "../../assets/images/myPicture/ResizeProfileImage.webp";
 
 function MyAbout() {
   return (

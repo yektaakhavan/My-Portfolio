@@ -1,6 +1,6 @@
 import "../../Component/Header/MyHeader.css"
 import Container from "react-bootstrap/esm/Container";
-import LogoFull from "../../assets/images/logo/logo-full2.png";
+import LogoFull from "../../assets/images/logo/logo-full2.webp";
 
 function MyHeader() {
   return (

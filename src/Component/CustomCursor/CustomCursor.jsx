@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 function CustomCursor() {
+  if (window.innerWidth < 768) return null;
+
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(true);
 
@@ -33,17 +35,15 @@ function CustomCursor() {
     <div
       style={{
         position: "fixed",
-        left: pos.x,
-        top: pos.y,
+        left: `${pos.x}px`,
+        top: `${pos.y}px`,
         transform: "translate(-50%, -50%)",
         pointerEvents: "none",
         fontSize: "28px",
         zIndex: 9999,
-        animation: "shine 1.5s infinite alternate",
         filter:
-          "drop-shadow(0 0 6px #b57edc) drop-shadow(0 0 10px #ffd700) drop-shadow(0 0 18px #b57edc)",
+          "drop-shadow(0 0 2px #b57edc) drop-shadow(0 0 4px #a3943fff) drop-shadow(0 0 6px #b57edc)",
         userSelect: "none",
-        transition: "transform 0.08s ease-out",
       }}
     >
       🌘

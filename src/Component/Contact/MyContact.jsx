@@ -33,7 +33,7 @@ function MyContact() {
           <i className="fab fa-github"></i>
         </a>
         <a
-          href="https://instagram.com/yourusername"
+          href="https://instagram.com/yekta__web"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
@@ -41,7 +41,7 @@ function MyContact() {
           <i className="fab fa-instagram"></i>
         </a>
         <a
-          href="https://t.me/yourusername"
+          href="https://t.me/yektaa_akhavan"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Telegram"
