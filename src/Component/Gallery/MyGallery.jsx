@@ -22,12 +22,15 @@ function MyGallery({ images, resetGallery }) {
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [zoom, setZoom] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const [isDraggingFlag, setIsDraggingFlag] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [isZooming, setIsZooming] = useState(false);
 
   const startPos = useRef({ x: 0, y: 0 });
   const isDragging = useRef(false);
   const pinchStart = useRef(null);
   const touchStart = useRef(null);
+  const lastTouchEnd = useRef(0);
+  const zoomTimeout = useRef(null);
 
   const DRAG_SPEED = 0.3;
   const isMobile = window.innerWidth <= 768;
@@ -38,6 +41,12 @@ function MyGallery({ images, resetGallery }) {
     } else {
       document.body.classList.remove("lightbox-active");
     }
+
+    return () => {
+      if (zoomTimeout.current) {
+        clearTimeout(zoomTimeout.current);
+      }
+    };
   }, [lightboxIndex]);
 
   const defaultImages = [
@@ -78,56 +87,67 @@ function MyGallery({ images, resetGallery }) {
     setLightboxIndex(index);
     setZoom(1);
     setOffset({ x: 0, y: 0 });
+    setIsZoomed(false);
+    setIsZooming(false);
     document.body.classList.add("lightbox-active");
   };
 
   const closeLightbox = () => {
-    if (!isDraggingFlag) {
+    if (!isDragging.current) {
       setLightboxIndex(null);
       setZoom(1);
       setOffset({ x: 0, y: 0 });
+      setIsZoomed(false);
+      setIsZooming(false);
       document.body.classList.remove("lightbox-active");
     }
   };
 
   const showPrev = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
+    if (isZoomed || isZooming) return;
     setLightboxIndex((prev) =>
       prev > 0 ? prev - 1 : displayImages.length - 1
     );
     setZoom(1);
     setOffset({ x: 0, y: 0 });
+    setIsZoomed(false);
   };
 
   const showNext = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
+    if (isZoomed || isZooming) return;
     setLightboxIndex((prev) =>
       prev < displayImages.length - 1 ? prev + 1 : 0
     );
     setZoom(1);
     setOffset({ x: 0, y: 0 });
+    setIsZoomed(false);
   };
 
   const zoomIn = (e) => {
     e.stopPropagation();
-    setZoom((prev) => prev + 0.2);
+    const newZoom = zoom + 0.2;
+    setZoom(newZoom);
+    setIsZoomed(newZoom > 1);
   };
 
   const zoomOut = (e) => {
     e.stopPropagation();
-    setZoom((prev) => (prev > 0.4 ? prev - 0.2 : prev));
+    const newZoom = zoom > 0.4 ? zoom - 0.2 : zoom;
+    setZoom(newZoom);
+    setIsZoomed(newZoom > 1);
   };
 
   // Drag handlers
   const handleMouseDown = (e) => {
     e.preventDefault();
     isDragging.current = true;
-    setIsDraggingFlag(false);
     startPos.current = { x: e.clientX, y: e.clientY };
   };
 
   const handleMouseMove = (e) => {
-    if (!isDragging.current) return;
+    if (!isDragging.current || !isZoomed) return;
 
     const dx = (e.clientX - startPos.current.x) * DRAG_SPEED;
     const dy = (e.clientY - startPos.current.y) * DRAG_SPEED;
@@ -138,7 +158,6 @@ function MyGallery({ images, resetGallery }) {
     }));
 
     startPos.current = { x: e.clientX, y: e.clientY };
-    setIsDraggingFlag(true);
   };
 
   const handleMouseUp = () => {
@@ -149,27 +168,62 @@ function MyGallery({ images, resetGallery }) {
   const handleWheel = (e) => {
     e.preventDefault();
     const delta = e.deltaY < 0 ? 0.2 : -0.2;
-    setZoom((prev) => Math.max(0.4, prev + delta));
+    const newZoom = Math.max(0.4, zoom + delta);
+    setZoom(newZoom);
+    setIsZoomed(newZoom > 1);
   };
 
   // Touch handlers
   const handleTouchStart = (e) => {
     if (e.touches.length === 1) {
       touchStart.current = e.touches[0].clientX;
+    } else if (e.touches.length === 2) {
+      setIsZooming(true);
+      const touch1 = e.touches[0];
+      const touch2 = e.touches[1];
+      const distance = Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+      );
+      pinchStart.current = distance;
     }
   };
 
   const handleTouchEnd = (e) => {
+    if (isZooming) {
+      // Reset zooming state after a short delay
+      if (zoomTimeout.current) {
+        clearTimeout(zoomTimeout.current);
+      }
+      zoomTimeout.current = setTimeout(() => {
+        setIsZooming(false);
+      }, 300);
+
+      touchStart.current = null;
+      return;
+    }
+
     if (!touchStart.current) return;
+
+    const now = Date.now();
+    if (now - lastTouchEnd.current < 300) {
+      lastTouchEnd.current = now;
+      return;
+    }
+    lastTouchEnd.current = now;
+
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStart.current - touchEndX;
+
     if (diff > 50) showNext(e);
     else if (diff < -50) showPrev(e);
+
     touchStart.current = null;
   };
 
   const handleTouchMove = (e) => {
     if (e.touches.length === 2) {
+      setIsZooming(true);
       const touch1 = e.touches[0];
       const touch2 = e.touches[1];
       const distance = Math.hypot(
@@ -181,14 +235,34 @@ function MyGallery({ images, resetGallery }) {
         pinchStart.current = distance;
       } else {
         const diff = distance - pinchStart.current;
-        setZoom((prev) => Math.max(0.4, prev + diff * 0.005));
+        const newZoom = Math.max(0.4, zoom + diff * 0.005);
+        setZoom(newZoom);
+        setIsZoomed(newZoom > 1);
         pinchStart.current = distance;
       }
     }
   };
 
   const handleTouchEndMobile = (e) => {
-    if (e.touches.length < 2) pinchStart.current = null;
+    if (e.touches.length < 2) {
+      pinchStart.current = null;
+    }
+  };
+
+  // Double tap for zoom
+  const handleDoubleTap = (e) => {
+    e.preventDefault();
+    const now = Date.now();
+    if (now - lastTouchEnd.current < 300) {
+      if (zoom === 1) {
+        setZoom(2);
+        setIsZoomed(true);
+      } else {
+        setZoom(1);
+        setIsZoomed(false);
+      }
+    }
+    lastTouchEnd.current = now;
   };
 
   return (
@@ -219,9 +293,8 @@ function MyGallery({ images, resetGallery }) {
             handleTouchEnd(e);
             handleTouchEndMobile(e);
           }}
-          style={{ cursor: "auto" }}
+          style={{ cursor: isZoomed ? "grab" : "auto" }}
         >
-          {/* Close button always works */}
           <span
             className="close-btn"
             onClick={(e) => {
@@ -229,16 +302,24 @@ function MyGallery({ images, resetGallery }) {
               setLightboxIndex(null);
               setZoom(1);
               setOffset({ x: 0, y: 0 });
+              setIsZoomed(false);
+              setIsZooming(false);
               document.body.classList.remove("lightbox-active");
             }}
           >
             &times;
           </span>
 
-          <span className="prev-btn" onClick={showPrev}>
+          <span
+            className={`prev-btn ${isZoomed || isZooming ? "disabled" : ""}`}
+            onClick={showPrev}
+          >
             &#10094;
           </span>
-          <span className="next-btn" onClick={showNext}>
+          <span
+            className={`next-btn ${isZoomed || isZooming ? "disabled" : ""}`}
+            onClick={showNext}
+          >
             &#10095;
           </span>
 
@@ -254,6 +335,9 @@ function MyGallery({ images, resetGallery }) {
             onWheel={handleWheel}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEndMobile}
+            onDoubleClick={handleDoubleTap}
+            onTouchEndCapture={handleDoubleTap}
           />
 
           {/* Zoom controls only on desktop */}
@@ -261,6 +345,13 @@ function MyGallery({ images, resetGallery }) {
             <div className="zoom-controls">
               <button onClick={zoomIn}>+</button>
               <button onClick={zoomOut}>-</button>
+            </div>
+          )}
+
+          {/* Zoom indicator for mobile */}
+          {isMobile && isZoomed && (
+            <div className="zoom-indicator">
+              <span>Pinch to zoom • Double tap to reset</span>
             </div>
           )}
         </div>

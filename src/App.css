@@ -1,11 +1,3 @@
-/* @font-face {
-  font-family: 'Poppins';
-  src: url('./assets/Fonts/Poppins/Poppins-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-} */
-
-
 @font-face {
   font-family: 'Alike';
   src: url('./assets/Fonts/Alike/Alike-Regular.ttf');
@@ -22,7 +14,7 @@ html,
 body {
   cursor: auto;
   max-width: 100%;
-  overflow-x: hidden;
+
 }
 
 body {
@@ -73,6 +65,7 @@ main {
   max-width: 1100px;
   margin: 3rem auto 5rem;
   padding: 0 1.5rem;
+  overflow-x: hidden;
 }
 
 

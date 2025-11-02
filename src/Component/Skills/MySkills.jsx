@@ -51,8 +51,8 @@ import {
 import { MdDevices } from "react-icons/md";
 
 const skillsData = [
-  { name: "HTML5", category: "frontend", level: "Expert", icon: <FaHtml5 /> },
-  { name: "CSS3", category: "frontend", level: "Expert", icon: <FaCss3Alt /> },
+  { name: "HTML5", category: "frontend", level: "Advanced", icon: <FaHtml5 /> },
+  { name: "CSS3", category: "frontend", level: "Advanced", icon: <FaCss3Alt /> },
   { name: "SASS", category: "frontend", level: "Advanced", icon: <FaSass /> },
   {
     name: "Bootstrap",
@@ -63,19 +63,19 @@ const skillsData = [
   {
     name: "Responsive Design",
     category: "frontend",
-    level: "Expert",
+    level: "Intermediate",
     icon: <MdDevices />,
   },
   {
     name: "JavaScript",
     category: "frontend",
-    level: "Advanced",
+    level: "Intermediate",
     icon: <FaJs />,
   },
-  { name: "React", category: "frontend", level: "Advanced", icon: <FaReact /> },
+  { name: "React", category: "frontend", level: "Intermediate", icon: <FaReact /> },
 
   { name: "Git", category: "tools", level: "Advanced", icon: <FaGitAlt /> },
-  { name: "GitHub", category: "tools", level: "Expert", icon: <FaGithub /> },
+  { name: "GitHub", category: "tools", level: "Advanced", icon: <FaGithub /> },
   {
     name: "Figma",
     category: "tools",
@@ -86,14 +86,14 @@ const skillsData = [
   {
     name: "Communication",
     category: "soft",
-    level: "Expert",
+    level: "Advanced",
     icon: <FaComments />,
   },
   { name: "Teamwork", category: "soft", level: "Advanced", icon: <FaUsers /> },
   {
     name: "Problem Solving",
     category: "soft",
-    level: "Expert",
+    level: "Intermediate",
     icon: <FaBrain />,
   },
 ];

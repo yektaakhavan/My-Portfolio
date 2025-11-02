@@ -117,20 +117,17 @@
     font-weight: 700;
 }
 
-.skill-badge.expert {
-    background: #e1c699;
-}
 
 .skill-badge.advanced {
     background: #cfa660;
 }
 
 .skill-badge.intermediate {
-    background: #b8955d;
+    background: #a58551;
 }
 
 .skill-badge.beginner {
-    background: #a48653;
+    background: #907548;
 }
 
 

@@ -1,69 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import "../../Component/Navbar/MyNavbar.css";
-// import {
-//   FaUser,
-//   FaCode,
-//   FaProjectDiagram,
-//   FaImages,
-//   FaFileAlt,
-//   FaEnvelope,
-// } from "react-icons/fa";
-
-// function MyNavbar() {
-//   const [activeSection, setActiveSection] = useState("about");
-//   const [scrolled, setScrolled] = useState(false);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setScrolled(window.scrollY > 10);
-
-//       const sections = document.querySelectorAll("main section");
-//       let current = "";
-
-//       sections.forEach((section) => {
-//         const sectionTop = section.offsetTop - 120;
-//         if (window.scrollY >= sectionTop) current = section.getAttribute("id");
-//       });
-
-//       setActiveSection(current);
-//     };
-
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   const scrollToSection = (id) => {
-//     const el = document.getElementById(id);
-//     if (el) el.scrollIntoView({ behavior: "smooth" });
-//   };
-
-//   const sections = [
-//     { id: "about", icon: <FaUser /> },
-//     { id: "skills", icon: <FaCode /> },
-//     { id: "projects", icon: <FaProjectDiagram /> },
-//     { id: "gallery", icon: <FaImages /> },
-//     { id: "resume", icon: <FaFileAlt /> },
-//     { id: "contact", icon: <FaEnvelope /> },
-//   ];
-
-//   return (
-//     <nav className={`my-nav ${scrolled ? "scrolled" : ""}`}>
-//       {sections.map(({ id, icon }) => (
-//         <button
-//           key={id}
-//           className={`nav-link ${activeSection === id ? "active" : ""}`}
-//           onClick={() => scrollToSection(id)}
-//         >
-//           <span className="icon">{icon}</span>
-//           {id.charAt(0).toUpperCase() + id.slice(1)}
-//         </button>
-//       ))}
-//     </nav>
-//   );
-// }
-
-// export default MyNavbar;
-
 import React, { useEffect, useState } from "react";
 import "../../Component/Navbar/MyNavbar.css";
 import {
@@ -107,7 +41,6 @@ function MyNavbar() {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
-    setShowOffcanvas(false);
   };
 
   const sections = [

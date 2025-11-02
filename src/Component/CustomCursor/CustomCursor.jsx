@@ -5,13 +5,12 @@ function CustomCursor() {
   const [visible, setVisible] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
 
-  // تشخیص دستگاه
   useEffect(() => {
     const checkDevice = () => {
       const isTouchDevice =
         "ontouchstart" in window || navigator.maxTouchPoints > 0;
       const isLargeScreen = window.innerWidth > 1024;
-      // فقط در دسکتاپ غیرلمسی نمایش بده
+
       return !isTouchDevice && isLargeScreen;
     };
 
@@ -25,7 +24,6 @@ function CustomCursor() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // موقعیت کرسر
   useEffect(() => {
     if (!isDesktop) return;
 
@@ -34,7 +32,6 @@ function CustomCursor() {
     return () => window.removeEventListener("mousemove", move);
   }, [isDesktop]);
 
-  // بررسی وضعیت لایت‌باکس
   useEffect(() => {
     if (!isDesktop) return;
 
@@ -51,7 +48,6 @@ function CustomCursor() {
     return () => observer.disconnect();
   }, [isDesktop]);
 
-  // اگر دسکتاپ نیست یا لایت‌باکس فعاله، نمایش داده نشه
   if (!isDesktop || !visible) return null;
 
   return (
