@@ -26,7 +26,7 @@ Smooth navigation and modern UI components.
 
 ## 🚀 Live Demo
 
-[View Demo on GitHub Pages](https://yektaakhavan.github.io/My-Portfolio/)
+[View Demo on GitHub Pages](https://yekta-akhavan.vercel.app/)
 
 ---
 
