@@ -21,14 +21,51 @@
 html,
 body {
   cursor: auto;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  padding: 0;
   font-family: "Alike", sans-serif;
   background: #1b0b3b;
   color: #e6e1f2;
   line-height: 1.6;
+}
+
+
+
+.container,
+.row,
+.col,
+[class*="col-"] {
+  max-width: 100%;
+}
+
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+header,
+main,
+footer,
+section,
+div {
+  max-width: 100%;
+}
+
+
+button,
+a,
+.btn {
+  max-width: 100%;
 }
 
 
