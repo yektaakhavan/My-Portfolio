@@ -91,7 +91,13 @@ const projectsData = [
     ],
     description:
       "A time-tracking dashboard that displays activity data across different time periods, offering valuable insights into productivity patterns and time usage.",
-    technologies: [<FaHtml5 />, <FaCss3Alt />, <FaJsSquare/>, <MdDevices />, <TbApi />],
+    technologies: [
+      <FaHtml5 />,
+      <FaCss3Alt />,
+      <FaJsSquare />,
+      <MdDevices />,
+      <TbApi />,
+    ],
   },
 ];
 
@@ -110,6 +116,14 @@ function MyProject({ setSelectedProjectImages }) {
         <div className="project-card" key={project.id}>
           <div className="project-header">
             <h3>{project.name}</h3>
+            <p className="project-description">{project.description}</p>
+            <div className="project-tech">
+              {project.technologies.map((icon, index) => (
+                <span key={index} className="tech-icon">
+                  {icon}
+                </span>
+              ))}
+            </div>
             <div className="project-buttons">
               <button
                 className="btn-demo"
@@ -130,14 +144,6 @@ function MyProject({ setSelectedProjectImages }) {
                 Show Images
               </button>
             </div>
-          </div>
-          <p className="project-description">{project.description}</p>
-          <div className="project-tech">
-            {project.technologies.map((icon, index) => (
-              <span key={index} className="tech-icon">
-                {icon}
-              </span>
-            ))}
           </div>
         </div>
       ))}

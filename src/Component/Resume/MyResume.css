@@ -1,24 +1,134 @@
-.resume-download-btn {
+.resume-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 2rem;
+  animation: fadeIn 0.7s ease;
+}
+
+.resume-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 2.5rem;
+  max-width: 630px;
+  /* border: 1px solid rgba(225, 198, 153, 0.25); */
+  /* box-shadow: 0 0 25px rgba(225, 198, 153, 0.25); */
+  color: #e6e1f2;
+  box-shadow: 0 6px 20px rgba(126, 88, 204, 0.6);
+  transition: box-shadow 0.3s ease;
+}
+
+.section-title {
+  color: #e1c699;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.resume-text {
+  color: #d5c8f3;
+  margin-bottom: 2.2rem;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.resume-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.resume-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.4rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 40px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.resume-btn i {
+  font-size: 1.2rem;
+}
+
+.resume-btn.view {
+  background: #2a1755;
+  color: #e1c699;
+  border: 1px solid #e1c699;
+}
+
+.resume-btn.view:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 14px #e1c69980;
+}
+
+.resume-btn.download {
   background: linear-gradient(145deg, #e1c699, #c9b26e);
   color: #1b0b3b;
-  font-weight: 700;
-  padding: 0.8rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(225, 198, 153, 0.5);
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
 }
 
-.resume-download-btn i {
-  font-size: 1.4rem;
+.resume-btn.download:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 16px #e1c69975;
 }
 
-.resume-download-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(225, 198, 153, 0.7);
-  background: linear-gradient(145deg, #c9b26e, #e1c699);
+.resume-skills {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.resume-skills span {
+  background: #351d6f;
+  color: #e1c699;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: 0.3s ease;
+  border: 1px solid #50349c;
+}
+
+.resume-skills span:hover {
+  background: #50349c;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+  .resume-section {
+    padding: 3rem 1rem;
+  }
+
+  .resume-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .resume-card {
+    padding: 1.5rem;
+  }
+
+  .resume-buttons {
+    flex-direction: column;
+  }
 }

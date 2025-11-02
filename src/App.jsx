@@ -12,6 +12,8 @@ import MyFooter from "./Component/Footer/MyFooter";
 import ScrollToTopButton from "./Component/ScrollToTop/ScrollToTopButton";
 import CustomCursor from "./Component/CustomCursor/CustomCursor";
 import Scrollbar from "./Component/customScrollbar/Scrollbar";
+import SocialBar from "./Component/SocialBar/SocialBar";
+import ContactForm from "./Component/ContactForm/ContactForm";
 
 function App() {
   useEffect(() => {
@@ -21,8 +23,9 @@ function App() {
   const [selectedProjectImages, setSelectedProjectImages] = useState([]);
   return (
     <>
-      <Scrollbar />
       <CustomCursor />
+      <SocialBar />
+      <Scrollbar />
       <MyHeader />
       <MyNavbar />
       <main>
@@ -31,7 +34,7 @@ function App() {
         <MyProjrct setSelectedProjectImages={setSelectedProjectImages} />
         <MyGallery images={selectedProjectImages} />
         <MyResume />
-        <MyContact />
+        <ContactForm />
       </main>
       <MyFooter />
       <ScrollToTopButton />

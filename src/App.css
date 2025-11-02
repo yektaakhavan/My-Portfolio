@@ -4,6 +4,8 @@
   font-weight: normal;
   font-style: normal;
 } */
+
+
 @font-face {
   font-family: 'Alike';
   src: url('./assets/Fonts/Alike/Alike-Regular.ttf');
@@ -14,6 +16,11 @@
 * {
   box-sizing: border-box;
   cursor: none !important;
+}
+
+html,
+body {
+  cursor: auto;
 }
 
 body {
@@ -49,5 +56,12 @@ body.lightbox-active * {
     transform: translate(-50%, -50%) scale(1.2);
     opacity: 1;
     filter: drop-shadow(0 0 14px #ffd700) drop-shadow(0 0 22px #b57edc);
+  }
+}
+
+
+@media (max-width: 1024px) {
+  * {
+    cursor: auto !important;
   }
 }

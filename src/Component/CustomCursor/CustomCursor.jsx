@@ -1,20 +1,43 @@
 import { useEffect, useState } from "react";
 
 function CustomCursor() {
-  if (window.innerWidth < 768) return null;
-
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  // تشخیص دستگاه
+  useEffect(() => {
+    const checkDevice = () => {
+      const isTouchDevice =
+        "ontouchstart" in window || navigator.maxTouchPoints > 0;
+      const isLargeScreen = window.innerWidth > 1024;
+      // فقط در دسکتاپ غیرلمسی نمایش بده
+      return !isTouchDevice && isLargeScreen;
+    };
+
+    setIsDesktop(checkDevice());
+
+    const handleResize = () => {
+      setIsDesktop(checkDevice());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // موقعیت کرسر
   useEffect(() => {
+    if (!isDesktop) return;
+
     const move = (e) => setPos({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, []);
+  }, [isDesktop]);
 
   // بررسی وضعیت لایت‌باکس
   useEffect(() => {
+    if (!isDesktop) return;
+
     const observer = new MutationObserver(() => {
       const isLightbox = document.body.classList.contains("lightbox-active");
       setVisible(!isLightbox);
@@ -26,10 +49,10 @@ function CustomCursor() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isDesktop]);
 
-  // اگر لایت‌باکس فعاله، کرسر نمایش داده نشه
-  if (!visible) return null;
+  // اگر دسکتاپ نیست یا لایت‌باکس فعاله، نمایش داده نشه
+  if (!isDesktop || !visible) return null;
 
   return (
     <div
@@ -52,16 +75,3 @@ function CustomCursor() {
 }
 
 export default CustomCursor;
-
-{
-  /* ✨ */
-}
-{
-  /* 💫 */
-}
-{
-  /* 🟣 */
-}
-{
-  /* 🌑 */
-}

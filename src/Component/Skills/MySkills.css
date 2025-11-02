@@ -1,4 +1,4 @@
-#skills {
+/* #skills {
     margin-bottom: 5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -32,4 +32,133 @@
     font-size: 1.1rem;
     letter-spacing: 1.2px;
 
+} */
+
+
+
+#skills {
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+/* FILTER BUTTONS */
+.skill-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    color: #e6e1f2;
+    padding: 0.45rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    font-weight: 600;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.filter-btn.active {
+    background: #e1c699;
+    color: #1b0b3b;
+}
+
+/* GRID */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.6rem;
+}
+
+/* CARD */
+.skill-card {
+    background: linear-gradient(145deg, #2a1653, #39205d);
+    padding: 1.7rem 1.2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(126, 88, 204, 0.55);
+    transition: 0.28s cubic-bezier(.25, .46, .45, .94);
+    position: relative;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(126, 88, 204, 0.8);
+}
+
+/* ICON */
+.skill-icon {
+    font-size: 2.6rem;
+    color: #e1c699;
+    margin-bottom: 0.6rem;
+}
+
+.skill-name {
+    display: block;
+    color: #e6e1f2;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* LEVEL BADGE */
+.skill-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 50px;
+    backdrop-filter: blur(6px);
+    color: #1b0b3b;
+    font-weight: 700;
+}
+
+.skill-badge.expert {
+    background: #e1c699;
+}
+
+.skill-badge.advanced {
+    background: #cfa660;
+}
+
+.skill-badge.intermediate {
+    background: #b8955d;
+}
+
+.skill-badge.beginner {
+    background: #a48653;
+}
+
+
+/* Add to existing MySkills.css */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+    }
+
+    .skill-card {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .skill-icon {
+        font-size: 2rem;
+    }
+
+    .skill-name {
+        font-size: 0.9rem;
+    }
+
+    .skill-filters {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
 }

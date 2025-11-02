@@ -1,43 +1,5 @@
-#contact {
+/* #contact {
     max-width: 600px;
     margin: 0 auto 5rem;
     text-align: center;
-}
-
-#contact p {
-    font-size: 1.15rem;
-    color: #d8d2f2;
-    margin-bottom: 1.8rem;
-}
-
-#contact a.email-btn {
-    background: #e1c699;
-    color: #1b0b3b;
-    font-weight: 700;
-    padding: 0.75rem 1.8rem;
-    border-radius: 40px;
-    text-decoration: none;
-    box-shadow: 0 0 10px #e1c699;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#contact a.email-btn:hover {
-    background: #c9b26e;
-    color: #1b0b3b;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-}
-
-.social-links a {
-    color: #c9b8e5;
-    font-size: 1.8rem;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: #e1c699;
-}
+} */

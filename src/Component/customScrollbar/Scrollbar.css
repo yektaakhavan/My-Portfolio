@@ -1,6 +1,5 @@
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -18,3 +17,12 @@
     background: #1b0b3b;
     background-image: linear-gradient(2deg,rgba(27, 11, 59, 1) 0%, rgba(239, 217, 247, 1) 50%, rgba(222, 194, 140, 1) 100%);
 }
+
+
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
