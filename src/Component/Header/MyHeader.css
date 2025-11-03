@@ -1,77 +1,90 @@
-/* header {
-    background: linear-gradient(135deg, #3f215f 0%, #1b0b3b 100%);
-    padding: 3rem 2rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(100, 70, 130, 0.7);
-}
- */
-
-
-
-/* header {
-    background:
-        radial-gradient(circle at 30% 30%, rgba(205, 125, 255, 0.20) 0%, transparent 55%),
-        radial-gradient(circle at 70% 60%, rgba(130, 50, 200, 0.18) 0%, transparent 50%),
-        radial-gradient(circle at 40% 90%, rgba(255, 95, 190, 0.12) 0%, transparent 55%),
-        radial-gradient(circle at 80% 10%, rgba(80, 160, 255, 0.15) 0%, transparent 60%),
-        linear-gradient(145deg, #2a1749 0%, #0d0a22 100%);
-    background-blend-mode: screen;
-    padding: 3rem 2rem 2rem;
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-
-
-header::before {
-    content: "";
+.dev-illustration {
     position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-    background-size: 140px 140px, 100px 100px, 60px 60px;
-    opacity: 0.45;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    opacity: 0.6;
     pointer-events: none;
+    z-index: 0;
+    transform: scaleX(-1);
 }
 
 
+.dev-bg {
+    background-image: url("../../../assets/images/Illustrations/web-development_0wdh.svg");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 380px;
+    z-index: 0;
+}
 
-
-header::after {
-    content: "";
+.tech-icon {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 65%);
-    filter: blur(65px);
-    opacity: 0.55;
-    mix-blend-mode: screen;
+    opacity: 0.20;
     pointer-events: none;
+    filter: drop-shadow(0 0 4px rgba(140, 100, 200, 0.3));
+    z-index: 0;
+}
+
+.tech-html {
+    left: 50px;
+    top: 50px;
+    width: 60px;
+}
+
+.tech-css {
+    left: 130px;
+    top: 90px;
+    width: 55px;
+}
+
+.tech-bootstrap {
+    left: 210px;
+    top: 130px;
+    width: 55px;
+}
+
+.tech-js {
+    left: 65px;
+    top: 150px;
+    width: 65px;
+}
+
+.tech-react {
+    left: 145px;
+    top: 200px;
+    width: 60px;
+}
+
+.tech-github {
+    left: 60px;
+    top: 260px;
+    width: 50px;
+}
+
+.tech-responsive {
+    left: 140px;
+    top: 300px;
+    width: 55px;
 }
 
 
-@keyframes galaxyMove {
+
+
+.tech-icon {
+    animation: floatIcons 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatIcons {
     0% {
-        background-position: 0% 0%;
+        transform: translateY(0px);
     }
 
     100% {
-        background-position: 200% 200%;
+        transform: translateY(-8px);
     }
 }
 
-header {
-    animation: galaxyMove 32s linear infinite;
-} */
 
 
 
@@ -148,27 +161,9 @@ header {
     }
 }
 
-/* @keyframes drift {
-    0% {
-        background-position: 0 0;
-    }
 
-    100% {
-        background-position: -120px -180px;
-    }
-} */
 
-/* @keyframes twinkle {
-    0% {
-        opacity: .18;
-    }
 
-    100% {
-        opacity: .36;
-    }
-} */
-
-/* LOGO */
 .galaxy-header .logo {
     width: 160px;
     margin-bottom: 1rem;
@@ -176,7 +171,7 @@ header {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, .18));
 }
 
-/* TITLE */
+
 .galaxy-header h1 {
     font-size: 3rem;
     margin: 0;
@@ -185,7 +180,7 @@ header {
     text-shadow: 0 0 8px #e1c699b5;
 }
 
-/* SUB-TITLE */
+
 .galaxy-header p {
     margin-top: 0.8rem;
     font-size: 1.2rem;
@@ -193,7 +188,7 @@ header {
     color: #c9b8e5;
 }
 
-/* Mobile */
+
 @media (max-width: 768px) {
     .galaxy-header {
         padding: 2rem 1rem 1.5rem;
@@ -213,45 +208,15 @@ header {
     }
 }
 
-
-
-/* header .logo {
-    width: 160px;
-    margin-bottom: 1rem;
-    max-width: 80%;
-}
-
-header h1 {
-    font-size: 3rem;
-    margin: 0;
-    color: #e1c699;
-    letter-spacing: 2px;
-    text-shadow: 0 0 8px #e1c699;
-}
-
-header p {
-    margin-top: 0.8rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #c9b8e5;
+@media (max-width:768px) {
+    .tech-icon {
+        display: none;
+    }
 }
 
 
 @media (max-width: 768px) {
-    header {
-        padding: 2rem 1rem 1.5rem;
+    .dev-illustration {
+        display: none;
     }
-
-    header h1 {
-        font-size: 2rem;
-        letter-spacing: 1px;
-    }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    header .logo {
-        width: 120px;
-    }
-} */
+}
