@@ -80,20 +80,50 @@
 }
 
 .hamburger-btn {
-    background: none;
-    border: none;
-    color: #e1c699;
-    font-size: 1.5rem;
+    background: rgba(42, 22, 83, 0.45);
+    border: 1px solid rgba(225, 198, 153, 0.2);
+    padding: 0.7rem;
+    border-radius: 14px;
     cursor: pointer !important;
-    padding: 0.8rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: all .3s ease;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hamburger-btn:hover {
-    background: rgba(225, 198, 153, 0.1);
-
+    background: rgba(225, 198, 153, 0.13);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.38);
 }
+
+.hamburger-btn:active {
+    transform: scale(.95);
+}
+
+
+.hamburger-btn:hover .dot {
+    transform: scale(1.25);
+    background: #f2dba8;
+}
+
+.dots-icon {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    justify-items: center;
+    align-items: center;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #e1c699;
+    border-radius: 50%;
+    transition: transform .25s ease, background .25s ease;
+}
+
 
 /* Offcanvas Menu */
 .offcanvas-menu {

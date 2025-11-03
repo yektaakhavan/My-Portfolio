@@ -75,6 +75,15 @@ body.lightbox-active * {
 }
 
 
+
+::selection {
+  background: #cfa2ff;
+  color: #000000;
+}
+
+
+
+
 @keyframes shine {
   from {
     transform: translate(-50%, -50%) scale(1);

@@ -19,7 +19,6 @@ function MyNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
 
-
   useEffect(() => {
     if (showOffcanvas) {
       document.body.style.overflow = "hidden";
@@ -106,7 +105,11 @@ function MyNavbar() {
           className="hamburger-btn"
           onClick={() => setShowOffcanvas(true)}
         >
-          <FaBars />
+          <div className="dots-icon">
+            {Array.from({ length: 9 }).map((_, i) => (
+              <span key={i} className="dot"></span>
+            ))}
+          </div>
         </button>
       </nav>
 
@@ -130,7 +133,7 @@ function MyNavbar() {
                 }`}
                 onClick={() => {
                   scrollToSection(id);
-                  setShowOffcanvas(false); 
+                  setShowOffcanvas(false);
                 }}
               >
                 <span className="icon">{icon}</span>
