@@ -15,33 +15,8 @@ import {
 import { IoMail } from "react-icons/io5";
 
 function MyNavbar() {
-  const [activeSection, setActiveSection] = useState("about");
-  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const [showOffcanvas, setShowOffcanvas] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-
-      const sections = document.querySelectorAll("main section");
-      let current = "";
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 120;
-        if (window.scrollY >= sectionTop) current = section.getAttribute("id");
-      });
-
-      setActiveSection(current);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   const sections = [
     { id: "about", icon: <FaUser /> },
@@ -53,103 +28,128 @@ function MyNavbar() {
   ];
 
   const socialLinks = [
-    {
-      icon: <FaGithub />,
-      url: "https://github.com/yektaakhavan",
-      label: "GitHub",
-    },
-    {
-      icon: <FaLinkedin />,
-      url: "https://linkedin.com/in/yekta-akhavan",
-      label: "LinkedIn",
-    },
-    {
-      icon: <FaTelegramPlane />,
-      url: "https://t.me/yektaa_akhavan",
-      label: "Telegram",
-    },
-    {
-      icon: <IoMail />,
-      url: "mailto:yekta.akhavan.dev@gmail.com",
-      label: "Email",
-    },
+    { icon: <FaGithub />, url: "https://github.com" },
+    { icon: <FaLinkedin />, url: "https://linkedin.com" },
+    { icon: <FaTelegramPlane />, url: "https://t.me" },
+    { icon: <IoMail />, url: "mailto:test@example.com" },
   ];
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let current = "";
+      sections.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 130) {
+          current = id;
+        }
+      });
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isMobile = window.innerWidth < 768;
 
   return (
     <>
-      {/* Desktop Navigation */}
-      <nav className={`my-nav desktop-nav ${scrolled ? "scrolled" : ""}`}>
-        {sections.map(({ id, icon }) => (
+      <nav className="my-nav">
+        {!isMobile && (
+          <div className="social-bar">
+            {socialLinks.map(({ icon, url }, i) => (
+              <a
+                key={i}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon"
+              >
+                {icon}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {isMobile ? (
           <button
-            key={id}
-            className={`nav-link ${activeSection === id ? "active" : ""}`}
-            onClick={() => {
-              scrollToSection(id);
-              setShowOffcanvas(false);
-            }}
+            className="hamburger-btn"
+            onClick={() => setShowOffcanvas(true)}
           >
-            <span className="icon">{icon}</span>
-            {id.charAt(0).toUpperCase() + id.slice(1)}
+            <FaBars />
           </button>
-        ))}
-      </nav>
-
-      {/* Mobile Navigation */}
-      <nav className={`my-nav mobile-nav ${scrolled ? "scrolled" : ""}`}>
-        <button
-          className="hamburger-btn"
-          onClick={() => setShowOffcanvas(true)}
-        >
-          <FaBars />
-        </button>
-      </nav>
-
-      {/* Offcanvas Menu */}
-      <div className={`offcanvas-menu ${showOffcanvas ? "active" : ""}`}>
-        <div
-          className="offcanvas-overlay"
-          onClick={() => setShowOffcanvas(false)}
-        ></div>
-        <div className="offcanvas-content">
-          <button className="close-btn" onClick={() => setShowOffcanvas(false)}>
-            &times;
-          </button>
-
-          <div className="offcanvas-links">
+        ) : (
+          <div className="menu">
             {sections.map(({ id, icon }) => (
               <button
                 key={id}
-                className={`offcanvas-link ${
-                  activeSection === id ? "active" : ""
-                }`}
+                className={`menu-link ${activeSection === id ? "active" : ""}`}
                 onClick={() => scrollToSection(id)}
               >
-                <span className="icon">{icon}</span>
-                {id.charAt(0).toUpperCase() + id.slice(1)}
+                {icon}
               </button>
             ))}
           </div>
+        )}
+      </nav>
 
-          {/* Social Links in Mobile Menu */}
-          <div className="offcanvas-social">
-            <h4>Connect with me</h4>
-            <div className="social-links-mobile">
-              {socialLinks.map((social, index) => (
+      {showOffcanvas && (
+        <div
+          className="offcanvas-overlay"
+          onClick={() => setShowOffcanvas(false)}
+        >
+          <div
+            className="offcanvas-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="offcanvas-header">
+              <h3>Menu</h3>
+              <button
+                className="close-btn"
+                onClick={() => setShowOffcanvas(false)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="offcanvas-links">
+              {sections.map(({ id, icon }) => (
+                <button
+                  key={id}
+                  className={`offcanvas-link ${
+                    activeSection === id ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    scrollToSection(id);
+                    setShowOffcanvas(false); // ✅ بسته‌شدن منو بعد از کلیک
+                  }}
+                >
+                  <span className="icon">{icon}</span>
+                  {id.charAt(0).toUpperCase() + id.slice(1)}
+                </button>
+              ))}
+            </div>
+
+            <div className="offcanvas-socials">
+              {socialLinks.map(({ icon, url }, i) => (
                 <a
-                  key={index}
-                  href={social.url}
+                  key={i}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link-mobile"
+                  className="social-icon"
                 >
-                  {social.icon}
-                  <span>{social.label}</span>
+                  {icon}
                 </a>
               ))}
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
