@@ -83,7 +83,10 @@ function MyNavbar() {
           <button
             key={id}
             className={`nav-link ${activeSection === id ? "active" : ""}`}
-            onClick={() => scrollToSection(id)}
+            onClick={() => {
+              scrollToSection(id);
+              setShowOffcanvas(false);
+            }}
           >
             <span className="icon">{icon}</span>
             {id.charAt(0).toUpperCase() + id.slice(1)}
