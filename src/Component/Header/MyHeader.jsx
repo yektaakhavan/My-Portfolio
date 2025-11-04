@@ -20,17 +20,21 @@ function MyHeader() {
 
         <img src={DevSvg} alt="" className="dev-illustration" />
 
-        <img src={HtmlIcon} alt="" className="tech-icon tech-html" />
-        <img src={CssIcon} alt="" className="tech-icon tech-css" />
-        <img src={JsIcon} alt="" className="tech-icon tech-js" />
-        <img src={ReactIcon} alt="" className="tech-icon tech-react" />
-        <img src={BootstrapIcon} alt="" className="tech-icon tech-bootstrap" />
+        <img src={HtmlIcon} alt="" className="header-tech-icon tech-html" />
+        <img src={CssIcon} alt="" className="header-tech-icon tech-css" />
+        <img src={JsIcon} alt="" className="header-tech-icon tech-js" />
+        <img src={ReactIcon} alt="" className="header-tech-icon tech-react" />
+        <img
+          src={BootstrapIcon}
+          alt=""
+          className="header-tech-icon tech-bootstrap"
+        />
         <img
           src={ResponsiveIcon}
           alt=""
-          className="tech-icon tech-responsive"
+          className="header-tech-icon tech-responsive"
         />
-        <img src={GithybIcon} alt="" className="tech-icon tech-github" />
+        <img src={GithybIcon} alt="" className="header-tech-icon tech-github" />
 
         <Container>
           <img src={LogoFull} alt="Yekta Akhavan Logo" className="logo" />

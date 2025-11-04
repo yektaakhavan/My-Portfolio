@@ -1,8 +1,8 @@
 .dev-illustration {
     position: absolute;
-    right: 0;
+    right: 20px;
     bottom: 0;
-    width: 400px;
+    width: 500px;
     opacity: 0.6;
     pointer-events: none;
     z-index: 0;
@@ -18,7 +18,7 @@
     z-index: 0;
 }
 
-.tech-icon {
+.header-tech-icon {
     position: absolute;
     opacity: 0.20;
     pointer-events: none;
@@ -71,7 +71,7 @@
 
 
 
-.tech-icon {
+.header-tech-icon {
     animation: floatIcons 6s ease-in-out infinite alternate;
 }
 
@@ -136,7 +136,7 @@
         radial-gradient(circle, rgba(255, 255, 255, 0.6) 0.8px, transparent 2px);
     background-size: 180px 180px, 260px 260px;
     opacity: 0.4;
-    animation: starsMove 90s linear infinite, starsTwinkle 4s ease-in-out infinite alternate;
+    animation: starsMove 35s linear infinite, starsTwinkle 4s ease-in-out infinite alternate;
     pointer-events: none;
     filter: blur(0.3px);
 }
@@ -209,7 +209,7 @@
 }
 
 @media (max-width:768px) {
-    .tech-icon {
+    .header-tech-icon {
         display: none;
     }
 }
