@@ -1,6 +1,6 @@
 import React from "react";
 import "../../Component/About/MyAbout.css";
-import MyPicture from "../../assets/images/myPicture/ProfileImage-gpt.png";
+import MyPicture from "../../assets/images/myPicture/ProfileImage-gpt.jpg";
 import { FaUserAlt, FaLightbulb, FaRocket } from "react-icons/fa";
 
 function MyAbout() {
