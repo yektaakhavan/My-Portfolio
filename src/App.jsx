@@ -13,6 +13,7 @@ import CustomCursor from "./Component/CustomCursor/CustomCursor";
 import Scrollbar from "./Component/customScrollbar/Scrollbar";
 import SocialBar from "./Component/SocialBar/SocialBar";
 import ContactForm from "./Component/ContactForm/ContactForm";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
       </main>
       <MyFooter />
       <ScrollToTopButton />
+      <SpeedInsights />
     </>
   );
 }
