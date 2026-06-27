@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App.jsx";
 
