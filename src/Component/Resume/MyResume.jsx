@@ -1,5 +1,5 @@
 import "../../Component/Resume/MyResume.css";
-import ResumeFile from "../../assets/pdf/Yekta-Akhavan-Safaei-FrontEnd-en.pdf";
+import ResumeFile from "../../assets/pdf/Yekta-Akhavan-FrontEnd-en.pdf";
 
 function MyResume() {
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../Component/Project/MyProject.css";
 import {
   FaHtml5,
@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { MdDevices, MdDesignServices } from "react-icons/md";
 import { TbApi } from "react-icons/tb"; //API
+import { SiTailwindcss } from "react-icons/si"; // Tailwind
 
 import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.webp";
 import AuthorPort2 from "../../assets/images/projectImage/AuthorPortfolio/about-page.webp";
@@ -28,12 +29,24 @@ import ToDoApp2 from "../../assets/images/projectImage/ToDoApp/ToDoApp (1).webp"
 import trackingdash1 from "../../assets/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.webp";
 import trackingdash2 from "../../assets/images/projectImage/Time-tracking-dashboard/responsive-Time-tracking-dashboard.webp";
 
+// لیست دسته‌بندی‌ها برای دکمه‌های فیلتر
+// اگر پروژه‌ی Tailwind داشتی اینجا میاد و خودش تو فیلترها فعال میشه
+const categories = [
+  { key: "all", label: "All" },
+  { key: "react", label: "React" },
+  { key: "tailwind", label: "Tailwind" },
+  { key: "bootstrap", label: "Bootstrap" },
+  { key: "vanilla", label: "Vanilla JS" },
+];
+
 const projectsData = [
   {
     id: "project3",
     name: "Author-Portfolio",
     github: "https://github.com/yektaakhavan/Author-portfolio",
     demo: "https://www.akhavan-safaei.ir/",
+    // دسته‌بندی بر اساس تکنولوژی‌هایی که استفاده شده (می‌تونه چند تایی باشه)
+    category: ["react", "bootstrap"],
     images: [
       { src: AuthorPort1, alt: "Project 1 Image 1" },
       { src: AuthorPort2, alt: "Project 1 Image 2" },
@@ -58,6 +71,7 @@ const projectsData = [
     name: "coffee-listing",
     github: "https://github.com/yektaakhavan/coffee-listing",
     demo: "https://yektaakhavan.github.io/coffee-listing/",
+    category: ["react"],
     images: [
       { src: Coffee1, alt: "Project 2 Image 1" },
       { src: Coffee2, alt: "Project 2 Image 2" },
@@ -65,13 +79,14 @@ const projectsData = [
     ],
     description:
       "A coffee listing interface that presents product details and pricing, streamlining the process of reviewing options and making selections efficiently.",
-    technologies: [<FaReact />, <FaCss3Alt />, <MdDevices />, <TbApi />, ,],
+    technologies: [<FaReact />, <FaCss3Alt />, <MdDevices />, <TbApi />],
   },
   {
     id: "project2",
     name: "react-ToDoApp",
     github: "https://github.com/yektaakhavan/react-ToDoApp",
     demo: "https://yektaakhavan.github.io/react-ToDoApp/",
+    category: ["react"],
     images: [
       { src: ToDoApp1, alt: "Project 3 Image 1" },
       { src: ToDoApp2, alt: "Project 3 Image 2" },
@@ -85,6 +100,7 @@ const projectsData = [
     name: "Time-tracking-dashboard",
     github: "https://github.com/yektaakhavan/Time-tracking-dashboard",
     demo: "https://yektaakhavan.github.io/Time-tracking-dashboard/",
+    category: ["vanilla"],
     images: [
       { src: trackingdash1, alt: "Project 4 Image 1" },
       { src: trackingdash2, alt: "Project 4 Image 2" },
@@ -99,9 +115,22 @@ const projectsData = [
       <TbApi />,
     ],
   },
+  // نمونه: وقتی پروژه Tailwind داشتی، اینجوری اضافه‌ش کن:
+  // {
+  //   id: "project5",
+  //   name: "my-tailwind-project",
+  //   github: "...",
+  //   demo: "...",
+  //   category: ["tailwind"],
+  //   images: [...],
+  //   description: "...",
+  //   technologies: [<FaReact />, <SiTailwindcss />, <MdDevices />],
+  // },
 ];
 
 function MyProject({ setSelectedProjectImages }) {
+  const [activeFilter, setActiveFilter] = useState("all");
+
   const handleShowGallery = (images) => {
     setSelectedProjectImages(images);
 
@@ -109,10 +138,31 @@ function MyProject({ setSelectedProjectImages }) {
     gallerySection?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // فیلتر کردن پروژه‌ها بر اساس دسته انتخاب‌شده
+  const filteredProjects =
+    activeFilter === "all"
+      ? projectsData
+      : projectsData.filter((project) =>
+          project.category?.includes(activeFilter),
+        );
+
   return (
     <section id="projects">
       <h2 className="section-title">Projects</h2>
-      {projectsData.map((project) => (
+
+      <div className="project-filters">
+        {categories.map((cat) => (
+          <button
+            key={cat.key}
+            className={`filter-btn ${activeFilter === cat.key ? "active" : ""}`}
+            onClick={() => setActiveFilter(cat.key)}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      {filteredProjects.map((project) => (
         <div className="project-card" key={project.id}>
           <div className="project-header">
             <h3>{project.name}</h3>
@@ -147,6 +197,12 @@ function MyProject({ setSelectedProjectImages }) {
           </div>
         </div>
       ))}
+
+      {filteredProjects.length === 0 && (
+        <p style={{ textAlign: "center", color: "#d8d2f2" }}>
+          No projects with this technology have been added yet.
+        </p>
+      )}
 
       <div style={{ textAlign: "center", marginTop: "2rem" }}>
         <button
