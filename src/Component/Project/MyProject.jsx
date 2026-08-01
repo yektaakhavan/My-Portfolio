@@ -133,9 +133,6 @@ function MyProject({ setSelectedProjectImages }) {
 
   const handleShowGallery = (images) => {
     setSelectedProjectImages(images);
-
-    const gallerySection = document.getElementById("gallery");
-    gallerySection?.scrollIntoView({ behavior: "smooth" });
   };
 
   // فیلتر کردن پروژه‌ها بر اساس دسته انتخاب‌شده

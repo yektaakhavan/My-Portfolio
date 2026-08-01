@@ -1,41 +1,4 @@
-#gallery {
-    margin-bottom: 5rem;
-    width: 100%;
-    max-width: 100vw;
-    overflow: hidden;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.4rem;
-    width: 100%;
-    max-width: 100%;
-}
-
-.gallery-item {
-    position: relative;
-    cursor: pointer;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(126, 88, 204, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(126, 88, 204, 0.85);
-}
-
-.gallery-item img {
-    width: 100%;
-    display: block;
-    border-radius: 16px;
-    object-fit: cover;
-    height: 140px;
-}
-
-/* Lightbox */
+/* Lightbox modal — باز می‌شه وقتی کاربر روی "Show Images" یک پروژه کلیک می‌کنه */
 .lightbox {
     position: fixed;
     top: 0;
@@ -154,24 +117,6 @@
     background-color: #c9b26e;
 }
 
-.btn-show-all {
-    background: #e1c699;
-    border: none;
-    padding: 0.5rem 1.3rem;
-    border-radius: 30px;
-    font-weight: 700;
-    color: #1b0b3b;
-    cursor: pointer;
-    box-shadow: 0 0 10px #e1c699;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-    margin-left: 0;
-}
-
-.btn-show-all:hover {
-    background: #c9b26e;
-}
-
 /* Zoom indicator */
 .zoom-indicator {
     position: absolute;
@@ -188,17 +133,24 @@
     text-align: center;
 }
 
+/* شمارنده‌ی تصویر جاری (مثلاً 2 / 5) */
+.lightbox-counter {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #e1c699;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    z-index: 10001;
+}
+
 /* واکنش‌گرایی موبایل */
 @media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1rem;
-    }
-
-    .gallery-item img {
-        height: 120px;
-    }
-
     .lightbox-image {
         max-width: 95%;
         max-height: 80%;
@@ -226,23 +178,14 @@
         bottom: 10px;
     }
 
-    .btn-show-all {
-        width: 100%;
-        text-align: center;
-        margin-top: 1rem;
+    .lightbox-counter {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+        top: 15px;
     }
 }
 
 @media (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 0.8rem;
-    }
-
-    .gallery-item img {
-        height: 100px;
-    }
-
     .prev-btn,
     .next-btn {
         font-size: 2rem;

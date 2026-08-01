@@ -4,7 +4,6 @@ import {
   FaUser,
   FaCode,
   FaProjectDiagram,
-  FaImages,
   FaFileAlt,
   FaEnvelope,
   FaBars,
@@ -55,7 +54,6 @@ function MyNavbar() {
     { id: "about", icon: <FaUser /> },
     { id: "skills", icon: <FaCode /> },
     { id: "projects", icon: <FaProjectDiagram /> },
-    { id: "gallery", icon: <FaImages /> },
     { id: "resume", icon: <FaFileAlt /> },
     { id: "contact", icon: <FaEnvelope /> },
   ];

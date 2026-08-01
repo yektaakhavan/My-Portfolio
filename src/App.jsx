@@ -31,12 +31,15 @@ function App() {
         <MyAbout />
         <MySkills />
         <MyProjrct setSelectedProjectImages={setSelectedProjectImages} />
-        <MyGallery images={selectedProjectImages} />
         <MyResume />
         <ContactForm />
       </main>
       <MyFooter />
       <ScrollToTopButton />
+      <MyGallery
+        images={selectedProjectImages}
+        onClose={() => setSelectedProjectImages([])}
+      />
     </>
   );
 }
