@@ -48,12 +48,30 @@ import {
   FaUsers,
   FaBrain,
 } from "react-icons/fa";
+
+import { SiTypescript, SiTailwindcss } from "react-icons/si";
+
 import { MdDevices } from "react-icons/md";
 
 const skillsData = [
-  { name: "HTML5", category: "frontend", level: "Advanced", icon: <FaHtml5 /> },
-  { name: "CSS3", category: "frontend", level: "Advanced", icon: <FaCss3Alt /> },
-  { name: "SASS", category: "frontend", level: "Advanced", icon: <FaSass /> },
+  {
+    name: "HTML5",
+    category: "frontend",
+    level: "Advanced",
+    icon: <FaHtml5 />,
+  },
+  {
+    name: "CSS3",
+    category: "frontend",
+    level: "Advanced",
+    icon: <FaCss3Alt />,
+  },
+  {
+    name: "SASS",
+    category: "frontend",
+    level: "Advanced",
+    icon: <FaSass />,
+  },
   {
     name: "Bootstrap",
     category: "frontend",
@@ -61,21 +79,48 @@ const skillsData = [
     icon: <FaBootstrap />,
   },
   {
+    name: "Tailwind CSS",
+    category: "frontend",
+    level: "Advanced",
+    icon: <SiTailwindcss />,
+  },
+  {
     name: "Responsive Design",
     category: "frontend",
-    level: "Intermediate",
+    level: "Advanced",
     icon: <MdDevices />,
   },
   {
     name: "JavaScript",
     category: "frontend",
-    level: "Intermediate",
+    level: "Advanced",
     icon: <FaJs />,
   },
-  { name: "React", category: "frontend", level: "Intermediate", icon: <FaReact /> },
+  {
+    name: "TypeScript",
+    category: "frontend",
+    level: "Beginner",
+    icon: <SiTypescript />,
+  },
+  {
+    name: "React",
+    category: "frontend",
+    level: "Intermediate",
+    icon: <FaReact />,
+  },
 
-  { name: "Git", category: "tools", level: "Advanced", icon: <FaGitAlt /> },
-  { name: "GitHub", category: "tools", level: "Advanced", icon: <FaGithub /> },
+  {
+    name: "Git",
+    category: "tools",
+    level: "Advanced",
+    icon: <FaGitAlt />,
+  },
+  {
+    name: "GitHub",
+    category: "tools",
+    level: "Advanced",
+    icon: <FaGithub />,
+  },
   {
     name: "Figma",
     category: "tools",
@@ -89,7 +134,12 @@ const skillsData = [
     level: "Advanced",
     icon: <FaComments />,
   },
-  { name: "Teamwork", category: "soft", level: "Advanced", icon: <FaUsers /> },
+  {
+    name: "Teamwork",
+    category: "soft",
+    level: "Advanced",
+    icon: <FaUsers />,
+  },
   {
     name: "Problem Solving",
     category: "soft",
