@@ -29,6 +29,16 @@ import ToDoApp2 from "../../assets/images/projectImage/ToDoApp/ToDoApp (1).webp"
 import trackingdash1 from "../../assets/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.webp";
 import trackingdash2 from "../../assets/images/projectImage/Time-tracking-dashboard/responsive-Time-tracking-dashboard.webp";
 
+
+
+import CoffeLand1 from "../../assets/images/projectImage/the-coffee-land/home-page.png"
+import CoffeLand2 from "../../assets/images/projectImage/the-coffee-land/shop-page.png"
+import CoffeLand3 from "../../assets/images/projectImage/the-coffee-land/product-page.png"
+import CoffeLand4 from "../../assets/images/projectImage/the-coffee-land/blog-page.png"
+import CoffeLand5 from "../../assets/images/projectImage/the-coffee-land/about-page.png"
+import CoffeLand6 from "../../assets/images/projectImage/the-coffee-land/contact-page.png"
+import CoffeLand7 from "../../assets/images/projectImage/the-coffee-land/cart-page.png"
+
 // لیست دسته‌بندی‌ها برای دکمه‌های فیلتر
 // اگر پروژه‌ی Tailwind داشتی اینجا میاد و خودش تو فیلترها فعال میشه
 const categories = [
@@ -104,6 +114,32 @@ const projectsData = [
     images: [
       { src: trackingdash1, alt: "Project 4 Image 1" },
       { src: trackingdash2, alt: "Project 4 Image 2" },
+    ],
+    description:
+      "A time-tracking dashboard that displays activity data across different time periods, offering valuable insights into productivity patterns and time usage.",
+    technologies: [
+      <FaHtml5 />,
+      <FaCss3Alt />,
+      <FaJsSquare />,
+      <MdDevices />,
+      <TbApi />,
+    ],
+  },
+  {
+    id: "project5",
+    name: "The Coffe Land",
+    github: "https://github.com/yektaakhavan/The-Coffee-Land",
+    demo: "https://the-coffee-land.vercel.app/",
+    category: ["vanilla"],
+    images: [
+      { src: CoffeLand1, alt: "Project 5 Image 1" },
+      { src: CoffeLand2, alt: "Project 5 Image 2" },
+      { src: CoffeLand3, alt: "Project 5 Image 3" },
+      { src: CoffeLand4, alt: "Project 5 Image 4" },
+      { src: CoffeLand5, alt: "Project 5 Image 5" },
+      { src: CoffeLand6, alt: "Project 5 Image 6" },
+      { src: CoffeLand7, alt: "Project 5 Image 7" },
+     
     ],
     description:
       "A time-tracking dashboard that displays activity data across different time periods, offering valuable insights into productivity patterns and time usage.",
