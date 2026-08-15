@@ -1,251 +1,116 @@
-import React, { useState } from "react";
-import "../../Component/Project/MyProject.css";
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaBootstrap,
-  FaJsSquare,
-  FaReact,
-} from "react-icons/fa";
-import { MdDevices, MdDesignServices } from "react-icons/md";
-import { TbApi } from "react-icons/tb"; //API
-import { SiTailwindcss } from "react-icons/si"; // Tailwind
-
-import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.webp";
-import AuthorPort2 from "../../assets/images/projectImage/AuthorPortfolio/about-page.webp";
-import AuthorPort3 from "../../assets/images/projectImage/AuthorPortfolio/book-page.webp";
-import AuthorPort4 from "../../assets/images/projectImage/AuthorPortfolio/articles-page.webp";
-import AuthorPort5 from "../../assets/images/projectImage/AuthorPortfolio/article-page.webp";
-import AuthorPort6 from "../../assets/images/projectImage/AuthorPortfolio/contact-page.webp";
-import AuthorPort7 from "../../assets/images/projectImage/AuthorPortfolio/responsive.webp";
-
-import Coffee1 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (1).webp";
-import Coffee2 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (2).webp";
-import Coffee3 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (3).webp";
-
-import ToDoApp1 from "../../assets/images/projectImage/ToDoApp/ToDoApp (2).webp";
-import ToDoApp2 from "../../assets/images/projectImage/ToDoApp/ToDoApp (1).webp";
-
-import trackingdash1 from "../../assets/images/projectImage/Time-tracking-dashboard/Time-tracking-dashboard.webp";
-import trackingdash2 from "../../assets/images/projectImage/Time-tracking-dashboard/responsive-Time-tracking-dashboard.webp";
-
-
-
-import CoffeLand1 from "../../assets/images/projectImage/the-coffee-land/home-page.png"
-import CoffeLand2 from "../../assets/images/projectImage/the-coffee-land/shop-page.png"
-import CoffeLand3 from "../../assets/images/projectImage/the-coffee-land/product-page.png"
-import CoffeLand4 from "../../assets/images/projectImage/the-coffee-land/blog-page.png"
-import CoffeLand5 from "../../assets/images/projectImage/the-coffee-land/about-page.png"
-import CoffeLand6 from "../../assets/images/projectImage/the-coffee-land/contact-page.png"
-import CoffeLand7 from "../../assets/images/projectImage/the-coffee-land/cart-page.png"
-
-// لیست دسته‌بندی‌ها برای دکمه‌های فیلتر
-// اگر پروژه‌ی Tailwind داشتی اینجا میاد و خودش تو فیلترها فعال میشه
-const categories = [
-  { key: "all", label: "All" },
-  { key: "react", label: "React" },
-  { key: "tailwind", label: "Tailwind" },
-  { key: "bootstrap", label: "Bootstrap" },
-  { key: "vanilla", label: "Vanilla JS" },
-];
-
-const projectsData = [
-  {
-    id: "project3",
-    name: "Author-Portfolio",
-    github: "https://github.com/yektaakhavan/Author-portfolio",
-    demo: "https://www.akhavan-safaei.ir/",
-    // دسته‌بندی بر اساس تکنولوژی‌هایی که استفاده شده (می‌تونه چند تایی باشه)
-    category: ["react", "bootstrap"],
-    images: [
-      { src: AuthorPort1, alt: "Project 1 Image 1" },
-      { src: AuthorPort2, alt: "Project 1 Image 2" },
-      { src: AuthorPort3, alt: "Project 1 Image 3" },
-      { src: AuthorPort4, alt: "Project 1 Image 4" },
-      { src: AuthorPort5, alt: "Project 1 Image 5" },
-      { src: AuthorPort6, alt: "Project 1 Image 6" },
-      { src: AuthorPort7, alt: "Project 1 Image 7" },
-    ],
-    description:
-      "A personal website for an author, featuring biography details, book information, and sample content, providing users with a clear and structured browsing experience.",
-    technologies: [
-      <FaReact />,
-      <FaBootstrap />,
-      <FaCss3Alt />,
-      <MdDevices />,
-      <MdDesignServices />,
-    ],
-  },
-  {
-    id: "project1",
-    name: "coffee-listing",
-    github: "https://github.com/yektaakhavan/coffee-listing",
-    demo: "https://yektaakhavan.github.io/coffee-listing/",
-    category: ["react"],
-    images: [
-      { src: Coffee1, alt: "Project 2 Image 1" },
-      { src: Coffee2, alt: "Project 2 Image 2" },
-      { src: Coffee3, alt: "Project 2 Image 3" },
-    ],
-    description:
-      "A coffee listing interface that presents product details and pricing, streamlining the process of reviewing options and making selections efficiently.",
-    technologies: [<FaReact />, <FaCss3Alt />, <MdDevices />, <TbApi />],
-  },
-  {
-    id: "project2",
-    name: "react-ToDoApp",
-    github: "https://github.com/yektaakhavan/react-ToDoApp",
-    demo: "https://yektaakhavan.github.io/react-ToDoApp/",
-    category: ["react"],
-    images: [
-      { src: ToDoApp1, alt: "Project 3 Image 1" },
-      { src: ToDoApp2, alt: "Project 3 Image 2" },
-    ],
-    description:
-      "A task management application that enables adding, removing, and completing tasks, supporting effective daily organization and planning.",
-    technologies: [<FaReact />, <FaCss3Alt />, <MdDevices />],
-  },
-  {
-    id: "project4",
-    name: "Time-tracking-dashboard",
-    github: "https://github.com/yektaakhavan/Time-tracking-dashboard",
-    demo: "https://yektaakhavan.github.io/Time-tracking-dashboard/",
-    category: ["vanilla"],
-    images: [
-      { src: trackingdash1, alt: "Project 4 Image 1" },
-      { src: trackingdash2, alt: "Project 4 Image 2" },
-    ],
-    description:
-      "A time-tracking dashboard that displays activity data across different time periods, offering valuable insights into productivity patterns and time usage.",
-    technologies: [
-      <FaHtml5 />,
-      <FaCss3Alt />,
-      <FaJsSquare />,
-      <MdDevices />,
-      <TbApi />,
-    ],
-  },
-  {
-    id: "project5",
-    name: "The Coffe Land",
-    github: "https://github.com/yektaakhavan/The-Coffee-Land",
-    demo: "https://the-coffee-land.vercel.app/",
-    category: ["vanilla"],
-    images: [
-      { src: CoffeLand1, alt: "Project 5 Image 1" },
-      { src: CoffeLand2, alt: "Project 5 Image 2" },
-      { src: CoffeLand3, alt: "Project 5 Image 3" },
-      { src: CoffeLand4, alt: "Project 5 Image 4" },
-      { src: CoffeLand5, alt: "Project 5 Image 5" },
-      { src: CoffeLand6, alt: "Project 5 Image 6" },
-      { src: CoffeLand7, alt: "Project 5 Image 7" },
-     
-    ],
-    description:
-      "A time-tracking dashboard that displays activity data across different time periods, offering valuable insights into productivity patterns and time usage.",
-    technologies: [
-      <FaHtml5 />,
-      <FaCss3Alt />,
-      <FaJsSquare />,
-      <MdDevices />,
-      <TbApi />,
-    ],
-  },
-  // نمونه: وقتی پروژه Tailwind داشتی، اینجوری اضافه‌ش کن:
-  // {
-  //   id: "project5",
-  //   name: "my-tailwind-project",
-  //   github: "...",
-  //   demo: "...",
-  //   category: ["tailwind"],
-  //   images: [...],
-  //   description: "...",
-  //   technologies: [<FaReact />, <SiTailwindcss />, <MdDevices />],
-  // },
-];
+import { useState } from "react";
+import { projectsData, categories } from "../../data/projects";
+import { FaGithub, FaExternalLinkAlt, FaImages } from "react-icons/fa";
 
 function MyProject({ setSelectedProjectImages }) {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const handleShowGallery = (images) => {
-    setSelectedProjectImages(images);
-  };
-
-  // فیلتر کردن پروژه‌ها بر اساس دسته انتخاب‌شده
   const filteredProjects =
     activeFilter === "all"
       ? projectsData
-      : projectsData.filter((project) =>
-          project.category?.includes(activeFilter),
-        );
+      : projectsData.filter((project) => project.category?.includes(activeFilter));
 
   return (
-    <section id="projects">
-      <h2 className="section-title">Projects</h2>
+    <section id="projects" className="mb-20">
+      <h2 className="mb-8 text-center text-3xl font-bold text-gold sm:text-4xl">
+        Projects
+      </h2>
 
-      <div className="project-filters">
+      <div className="mb-10 flex flex-wrap justify-center gap-3">
         {categories.map((cat) => (
           <button
             key={cat.key}
-            className={`filter-btn ${activeFilter === cat.key ? "active" : ""}`}
             onClick={() => setActiveFilter(cat.key)}
+            className={`rounded-full border-2 px-5 py-2 text-sm font-bold transition ${
+              activeFilter === cat.key
+                ? "border-transparent bg-gradient-to-br from-[#c4a0df]/90 to-gold-soft/90 text-ink shadow-[0_0_10px_var(--color-gold)]"
+                : "border-gold text-gold hover:-translate-y-0.5 hover:bg-gold/15"
+            }`}
           >
             {cat.label}
           </button>
         ))}
       </div>
 
-      {filteredProjects.map((project) => (
-        <div className="project-card" key={project.id}>
-          <div className="project-header">
-            <h3>{project.name}</h3>
-            <p className="project-description">{project.description}</p>
-            <div className="project-tech">
-              {project.technologies.map((icon, index) => (
-                <span key={index} className="tech-icon">
-                  {icon}
+      <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+        {filteredProjects.map((project) => (
+          <div
+            key={project.id}
+            className="group flex flex-col overflow-hidden rounded-[20px] bg-gradient-to-br from-ink-light to-plum shadow-[0_6px_20px_rgba(126,88,204,0.6)] transition hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(126,88,204,0.9)]"
+          >
+            <button
+              onClick={() => setSelectedProjectImages(project.images)}
+              className="relative block aspect-video w-full overflow-hidden"
+              aria-label={`Show screenshots of ${project.name}`}
+            >
+              <img
+                src={project.images[0]?.src}
+                alt={project.images[0]?.alt || project.name}
+                loading="lazy"
+                className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+              />
+              <span className="absolute inset-0 flex items-center justify-center gap-2 bg-ink/0 text-sm font-bold text-transparent opacity-0 backdrop-blur-0 transition group-hover:bg-ink/50 group-hover:text-gold-soft group-hover:opacity-100 group-hover:backdrop-blur-[1px]">
+                <FaImages /> View screenshots
+              </span>
+              {project.images.length > 1 && (
+                <span className="absolute right-3 top-3 rounded-full bg-black/55 px-2.5 py-1 text-xs font-semibold text-gold backdrop-blur-sm">
+                  {project.images.length} photos
                 </span>
-              ))}
-            </div>
-            <div className="project-buttons">
-              <button
-                className="btn-demo"
-                onClick={() => window.open(project.demo, "_blank")}
-              >
-                Live Demo
-              </button>
-              <button
-                className="btn-github"
-                onClick={() => window.open(project.github, "_blank")}
-              >
-                View on GitHub
-              </button>
-              <button
-                className="btn-show-gallery"
-                onClick={() => handleShowGallery(project.images)}
-              >
-                Show Images
-              </button>
+              )}
+            </button>
+
+            <div className="flex flex-1 flex-col p-5">
+              <h3 className="mb-2 text-xl font-bold text-gold-soft drop-shadow-[0_0_4px_rgba(243,229,171,0.4)]">
+                {project.name}
+              </h3>
+              <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-lilac-soft">
+                {project.description}
+              </p>
+
+              <div className="mb-4 flex flex-wrap gap-2.5">
+                {project.technologies.map((Icon, i) => (
+                  <Icon key={i} className="text-lg text-gold transition hover:scale-110" />
+                ))}
+              </div>
+
+              <div className="mt-auto flex flex-wrap gap-2.5 pt-1">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-[#c4a0df]/90 to-gold-soft/90 px-4 py-1.5 text-xs font-bold text-ink shadow-[0_0_8px_var(--color-gold)] transition hover:-translate-y-0.5"
+                >
+                  <FaExternalLinkAlt className="text-[10px]" /> Live Demo
+                </a>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-gold/50 px-4 py-1.5 text-xs font-bold text-gold transition hover:-translate-y-0.5 hover:bg-gold/10"
+                >
+                  <FaGithub /> GitHub
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {filteredProjects.length === 0 && (
-        <p style={{ textAlign: "center", color: "#d8d2f2" }}>
+        <p className="text-center text-lilac-soft">
           No projects with this technology have been added yet.
         </p>
       )}
 
-      <div style={{ textAlign: "center", marginTop: "2rem" }}>
-        <button
-          className="project-buttons buttons"
-          onClick={() =>
-            window.open("https://github.com/yektaakhavan", "_blank")
-          }
+      <div className="mt-10 text-center">
+        <a
+          href="https://github.com/yektaakhavan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-sm font-bold text-ink shadow-[0_0_10px_var(--color-gold)] transition hover:-translate-y-0.5 hover:bg-[#c9b26e]"
         >
-          View All Projects on GitHub
-        </button>
+          <FaGithub /> View All Projects on GitHub
+        </a>
       </div>
     </section>
   );

@@ -1,25 +1,23 @@
-import { FaGithub, FaLinkedin, FaTelegramPlane } from "react-icons/fa";
-import { IoMail } from "react-icons/io5";
-import "./SocialBar.css";
+import { socialLinks } from "../../data/socialLinks";
 
 function SocialBar() {
   return (
-    <div className="socialBarContainer">
-      <div className="socialBar">
-        <a href="https://github.com/yektaakhavan" data-label="GitHub">
-          <FaGithub />
+    <div className="pointer-events-none fixed top-1/2 left-0 z-[9999] hidden -translate-y-1/2 flex-col gap-4 rounded-r-2xl border border-white/15 bg-white/5 p-3.5 backdrop-blur-md md:flex">
+      {socialLinks.map(({ icon: Icon, url, label }) => (
+        <a
+          key={label}
+          href={url}
+          target={url.startsWith("mailto:") ? undefined : "_blank"}
+          rel={url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+          aria-label={label}
+          className="group pointer-events-auto relative text-2xl text-[#f8e7d5]/80 transition duration-200 hover:-translate-x-1 hover:scale-110 hover:text-[#f8e7d5] hover:opacity-100"
+        >
+          <Icon />
+          <span className="pointer-events-none absolute left-[165%] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md border border-white/15 bg-white/10 px-2.5 py-1 text-xs text-[#f8e7d5] opacity-0 backdrop-blur-md transition group-hover:opacity-100">
+            {label}
+          </span>
         </a>
-        <a href="https://linkedin.com/in/yekta-akhavan" data-label="LinkedIn">
-          <FaLinkedin />
-        </a>
-        <a href="https://t.me/yektaa_akhavan" data-label="Telegram">
-          <FaTelegramPlane />
-        </a>
-        <a href="mailto:yekta.akhavan.dev@gmail.com" data-label="Email">
-          {" "}
-          <IoMail />
-        </a>
-      </div>
+      ))}
     </div>
   );
 }

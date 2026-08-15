@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import MyAbout from "./Component/About/MyAbout";
 import MyHeader from "./Component/Header/MyHeader";
 import MyNavbar from "./Component/Navbar/MyNavbar";
 import MySkills from "./Component/Skills/MySkills";
-import MyProjrct from "./Component/Project/MyProject";
+import MyProject from "./Component/Project/MyProject";
 import MyGallery from "./Component/Gallery/MyGallery";
 import MyResume from "./Component/Resume/MyResume";
 import MyFooter from "./Component/Footer/MyFooter";
 import ScrollToTopButton from "./Component/ScrollToTop/ScrollToTopButton";
 import CustomCursor from "./Component/CustomCursor/CustomCursor";
-import Scrollbar from "./Component/customScrollbar/Scrollbar";
 import SocialBar from "./Component/SocialBar/SocialBar";
 import ContactForm from "./Component/ContactForm/ContactForm";
 
@@ -20,17 +18,17 @@ function App() {
   }, []);
 
   const [selectedProjectImages, setSelectedProjectImages] = useState([]);
+
   return (
     <>
       <CustomCursor />
       <SocialBar />
-      <Scrollbar />
       <MyHeader />
       <MyNavbar />
-      <main>
+      <main className="mx-auto max-w-[1100px] px-4 py-12 sm:px-6 lg:px-8">
         <MyAbout />
         <MySkills />
-        <MyProjrct setSelectedProjectImages={setSelectedProjectImages} />
+        <MyProject setSelectedProjectImages={setSelectedProjectImages} />
         <MyResume />
         <ContactForm />
       </main>

@@ -1,10 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
-import "../../Component/Gallery/MyGallery.css";
+import { useEffect, useState, useRef } from "react";
 
-// این کامپوننت دیگه یک بخش/سکشن ثابت روی صفحه نیست.
-// فقط وقتی کاربر روی دکمه‌ی "Show Images" یک پروژه کلیک می‌کنه،
-// به‌صورت یک مودال (لایت‌باکس) روی صفحه باز میشه و عکس‌های همون پروژه رو نشون میده.
-// وقتی images خالی باشه، چیزی رندر نمی‌شه.
+// این کامپوننت یک سکشن ثابت روی صفحه نیست؛ فقط وقتی کاربر روی دکمه‌ی
+// "Show Images" یک پروژه کلیک می‌کنه، به‌صورت لایت‌باکس باز می‌شه.
 function MyGallery({ images, onClose }) {
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [zoom, setZoom] = useState(1);
@@ -28,7 +25,6 @@ function MyGallery({ images, onClose }) {
 
   const hasImages = images && images.length > 0;
 
-  // به‌محض این‌که عکس‌های یک پروژه ست بشه، لایت‌باکس رو از تصویر اول باز کن
   useEffect(() => {
     if (hasImages) {
       setLightboxIndex(0);
@@ -42,12 +38,7 @@ function MyGallery({ images, onClose }) {
   }, [images]);
 
   useEffect(() => {
-    if (lightboxIndex !== null) {
-      document.body.classList.add("lightbox-active");
-    } else {
-      document.body.classList.remove("lightbox-active");
-    }
-
+    document.body.classList.toggle("lightbox-active", lightboxIndex !== null);
     return () => {
       if (zoomTimeout.current) clearTimeout(zoomTimeout.current);
     };
@@ -98,7 +89,6 @@ function MyGallery({ images, onClose }) {
     clampOffset(offset, newZoom);
   };
 
-  // Mouse drag (desktop)
   const handleMouseDown = (e) => {
     e.preventDefault();
     if (!isZoomed) return;
@@ -111,10 +101,7 @@ function MyGallery({ images, onClose }) {
     const dx = (e.clientX - startPos.current.x) * DRAG_SPEED;
     const dy = (e.clientY - startPos.current.y) * DRAG_SPEED;
     startPos.current = { x: e.clientX, y: e.clientY };
-    setOffset((prev) => {
-      const next = { x: prev.x + dx, y: prev.y + dy };
-      return clampOffset(next, zoom);
-    });
+    setOffset((prev) => clampOffset({ x: prev.x + dx, y: prev.y + dy }, zoom));
   };
 
   const handleMouseUp = () => {
@@ -147,10 +134,8 @@ function MyGallery({ images, onClose }) {
     if (!container || !img) return nextOffset;
 
     const cRect = container.getBoundingClientRect();
-    const baseW =
-      baseSize.current.w || img.getBoundingClientRect().width / usedZoom;
-    const baseH =
-      baseSize.current.h || img.getBoundingClientRect().height / usedZoom;
+    const baseW = baseSize.current.w || img.getBoundingClientRect().width / usedZoom;
+    const baseH = baseSize.current.h || img.getBoundingClientRect().height / usedZoom;
 
     const scaledW = baseW * usedZoom;
     const scaledH = baseH * usedZoom;
@@ -173,7 +158,6 @@ function MyGallery({ images, onClose }) {
     if (e.touches.length === 1) {
       const t = e.touches[0];
       touchStart.current = t.clientX;
-
       if (isZoomed) {
         isDragging.current = true;
         startPos.current = { x: t.clientX, y: t.clientY };
@@ -182,11 +166,7 @@ function MyGallery({ images, onClose }) {
       setIsZooming(true);
       const t1 = e.touches[0];
       const t2 = e.touches[1];
-      const distance = Math.hypot(
-        t2.clientX - t1.clientX,
-        t2.clientY - t1.clientY,
-      );
-      pinchStart.current = distance;
+      pinchStart.current = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
     }
   };
 
@@ -198,10 +178,7 @@ function MyGallery({ images, onClose }) {
       setIsZooming(true);
       const t1 = e.touches[0];
       const t2 = e.touches[1];
-      const distance = Math.hypot(
-        t2.clientX - t1.clientX,
-        t2.clientY - t1.clientY,
-      );
+      const distance = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
 
       if (!pinchStart.current) pinchStart.current = distance;
       else {
@@ -245,10 +222,7 @@ function MyGallery({ images, onClose }) {
       return;
     }
 
-    const touchEndX =
-      e.changedTouches && e.changedTouches[0]
-        ? e.changedTouches[0].clientX
-        : null;
+    const touchEndX = e.changedTouches?.[0]?.clientX ?? null;
     if (touchEndX == null) {
       touchStart.current = null;
       return;
@@ -286,52 +260,48 @@ function MyGallery({ images, onClose }) {
 
   if (lightboxIndex === null || !hasImages) return null;
 
+  const navBtnBase =
+    "absolute top-1/2 z-[10001] flex h-[60px] w-[60px] -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-5xl text-gold backdrop-blur-md transition hover:scale-110 hover:bg-black/70 hover:text-white";
+
   return (
     <div
-      className="lightbox"
+      className="fixed inset-0 z-[9999] flex touch-none select-none items-center justify-center bg-black/90"
       onClick={closeLightbox}
       style={{ cursor: isZoomed ? "grab" : "auto" }}
     >
-      <div
-        ref={containerRef}
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <span
-          className="close-btn"
+      <div ref={containerRef} className="relative flex h-full w-full items-center justify-center">
+        <button
           onClick={(e) => {
             e.stopPropagation();
             closeLightbox();
           }}
+          aria-label="Close gallery"
+          className="absolute right-6 top-5 z-[10000] flex h-[50px] w-[50px] items-center justify-center rounded-full bg-black/50 text-4xl text-gold backdrop-blur-md transition hover:scale-110 hover:bg-black/70"
         >
           &times;
-        </span>
+        </button>
 
-        <span
-          className={`prev-btn ${isZoomed || isZooming ? "disabled" : ""}`}
+        <button
+          aria-label="Previous image"
           onClick={showPrev}
+          className={`left-5 ${navBtnBase} ${isZoomed || isZooming ? "pointer-events-none opacity-30" : ""}`}
         >
           &#10094;
-        </span>
-        <span
-          className={`next-btn ${isZoomed || isZooming ? "disabled" : ""}`}
+        </button>
+        <button
+          aria-label="Next image"
           onClick={showNext}
+          className={`right-5 ${navBtnBase} ${isZoomed || isZooming ? "pointer-events-none opacity-30" : ""}`}
         >
           &#10095;
-        </span>
+        </button>
 
         <img
           ref={imgRef}
           src={images[lightboxIndex].src}
           alt={images[lightboxIndex].alt}
-          className="lightbox-image"
           onLoad={handleImageLoad}
+          className="max-h-[90%] max-w-[90%] rounded-xl shadow-[0_0_20px_var(--color-gold)] [will-change:transform]"
           style={{
             transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
             cursor: zoom > 1 ? "grab" : "auto",
@@ -359,20 +329,30 @@ function MyGallery({ images, onClose }) {
         />
 
         {!isMobile && (
-          <div className="zoom-controls">
-            <button onClick={zoomIn}>+</button>
-            <button onClick={zoomOut}>-</button>
+          <div className="absolute bottom-8 z-[10001] flex gap-4">
+            <button
+              onClick={zoomIn}
+              className="rounded-lg bg-gold px-4 py-2 text-xl font-bold text-ink transition hover:scale-110 hover:bg-[#c9b26e]"
+            >
+              +
+            </button>
+            <button
+              onClick={zoomOut}
+              className="rounded-lg bg-gold px-4 py-2 text-xl font-bold text-ink transition hover:scale-110 hover:bg-[#c9b26e]"
+            >
+              -
+            </button>
           </div>
         )}
 
         {isMobile && isZoomed && (
-          <div className="zoom-indicator">
-            <span>Pinch to zoom • Double tap to reset</span>
+          <div className="absolute bottom-5 left-1/2 z-[10001] -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-xs text-white backdrop-blur-md">
+            Pinch to zoom • Double tap to reset
           </div>
         )}
 
         {images.length > 1 && (
-          <div className="lightbox-counter">
+          <div className="absolute top-5 left-1/2 z-[10001] -translate-x-1/2 rounded-full bg-black/50 px-4 py-1.5 text-sm font-semibold text-gold backdrop-blur-md">
             {lightboxIndex + 1} / {images.length}
           </div>
         )}

@@ -3,30 +3,28 @@ import { useEffect, useState } from "react";
 function CustomCursor() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(true);
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const checkDevice = () => {
-      const isTouchDevice =
-        "ontouchstart" in window || navigator.maxTouchPoints > 0;
+      const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
       const isLargeScreen = window.innerWidth > 1024;
-
       return !isTouchDevice && isLargeScreen;
     };
 
     setIsDesktop(checkDevice());
-
-    const handleResize = () => {
-      setIsDesktop(checkDevice());
-    };
-
+    const handleResize = () => setIsDesktop(checkDevice());
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    if (!isDesktop) return;
+    document.body.classList.toggle("custom-cursor-active", isDesktop);
+    return () => document.body.classList.remove("custom-cursor-active");
+  }, [isDesktop]);
 
+  useEffect(() => {
+    if (!isDesktop) return;
     const move = (e) => setPos({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
@@ -34,17 +32,10 @@ function CustomCursor() {
 
   useEffect(() => {
     if (!isDesktop) return;
-
     const observer = new MutationObserver(() => {
-      const isLightbox = document.body.classList.contains("lightbox-active");
-      setVisible(!isLightbox);
+      setVisible(!document.body.classList.contains("lightbox-active"));
     });
-
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
   }, [isDesktop]);
 
@@ -52,17 +43,12 @@ function CustomCursor() {
 
   return (
     <div
+      aria-hidden="true"
+      className="pointer-events-none fixed z-[9999] select-none text-[28px] [filter:drop-shadow(0_0_2px_#b57edc)_drop-shadow(0_0_4px_#a3943f)_drop-shadow(0_0_6px_#b57edc)]"
       style={{
-        position: "fixed",
         left: `${pos.x}px`,
         top: `${pos.y}px`,
         transform: "translate(-50%, -50%)",
-        pointerEvents: "none",
-        fontSize: "28px",
-        zIndex: 9999,
-        filter:
-          "drop-shadow(0 0 2px #b57edc) drop-shadow(0 0 4px #a3943fff) drop-shadow(0 0 6px #b57edc)",
-        userSelect: "none",
       }}
     >
       🌘
