@@ -42,11 +42,10 @@ import CoffeLandVideo from "../assets/images/projectImage/the-coffee-land/the-co
 import taskTracker1 from "../assets/images/projectImage/Project-task-tracker/The-Atelier-Ledger-lg.webp";
 import taskTracker2 from "../assets/images/projectImage/Project-task-tracker/The-Atelier-Ledger-xs.webp";
 
-import VataskTracker1 from "../assets/images/projectImage/Vanilla-Project-Task-Tracker/vanilla-project-task-tracker-lg.webp";
-import VataskTracker2 from "../assets/images/projectImage/Vanilla-Project-Task-Tracker/vanilla-project-task-tracker-xs.webp";
+import VataskTracker1 from "../assets/images/projectImage/vanilla-project-task-tracker/vanilla-project-task-tracker-lg.webp";
+import VataskTracker2 from "../assets/images/projectImage/vanilla-project-task-tracker/vanilla-project-task-tracker-xs.webp";
 
-// دکمه‌های فیلتر بالای بخش پروژه‌ها. برای اضافه کردن یک تکنولوژی جدید
-// به فیلترها، فقط یک آبجکت جدید با key و label به این آرایه اضافه کن.
+
 export const categories = [
   { key: "all", label: "All" },
   { key: "react", label: "React" },
@@ -55,13 +54,7 @@ export const categories = [
   { key: "vanilla", label: "Vanilla JS" },
 ];
 
-// ─────────────────────────────────────────────────────────────
-// اضافه کردن یک پروژه‌ی جدید:
-// 1) عکس‌های پروژه رو داخل src/assets/images/projectImage/<NameOfProject>/ بذار
-// 2) عکس‌ها رو بالای همین فایل import کن (مثل نمونه‌های بالا)
-// 3) یک آبجکت جدید طبق قالب زیر به آرایه‌ی projectsData اضافه کن
-// همین! نیازی به تغییر هیچ کامپوننتی نیست.
-// ─────────────────────────────────────────────────────────────
+
 export const projectsData = [
   {
     id: "project5",
