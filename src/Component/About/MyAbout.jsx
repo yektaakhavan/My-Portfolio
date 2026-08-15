@@ -1,4 +1,4 @@
-import MyPicture from "../../assets/images/myPicture/personal-profile.png";
+import MyPicture from "../../assets/images/myPicture/yekta-akhavan-wide.webp";
 import { FaUserAlt, FaLightbulb, FaRocket } from "react-icons/fa";
 
 const badges = [
