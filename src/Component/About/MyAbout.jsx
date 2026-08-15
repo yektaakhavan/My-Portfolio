@@ -1,4 +1,4 @@
-import MyPicture from "../../assets/images/myPicture/ProfileImage-gpt.webp";
+import MyPicture from "../../assets/images/myPicture/personal-profile.png";
 import { FaUserAlt, FaLightbulb, FaRocket } from "react-icons/fa";
 
 const badges = [
